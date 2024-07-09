@@ -15,8 +15,9 @@ import PwSearchPage from "../member/page/PwSearchPage";
 
 
 // Product Page Import
-import ProductSellPage from "../webpage/product/ProductInsertPage";
-
+import ProductInsertPage from "../webpage/product/ProductInsertPage";
+import ProductUpdatePage from "../webpage/product/ProductUpdatePage";
+import ProductDetailPage from "../webpage/product/ProductDetailPage";
 
 // Cs Page Import
 import CSSelect from "../webpage/cs/CSSelect";
@@ -86,15 +87,15 @@ function RouterApp() {
         // 상품 라우팅
         {
             path: "/products/sell",
-            element: <ProductSellPage handleStorageChange={handleStorageChange} memberId={memberId}/>
+            element: <ProductInsertPage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
-            path: "/products/:product_number",
-            element: <div>상세조회</div>
+            path: "/products/:productNumber",
+            element: <ProductDetailPage memberId={memberId}/>
         },
         {
-            path: "/products/update/:product_number",
-            element: <div>수정</div>
+            path: "/products/update/:productNumber",
+            element: <ProductUpdatePage />
         },
 
 

@@ -1,5 +1,10 @@
 package com.samsam.begin.ji.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -30,16 +35,54 @@ public class ImgService {
         return imgRepository.findAll(pageable);
     }
 	
+	// 이미지 저장
 	@Transactional
 	public Img saveImg(Img img) {
 		return imgRepository.save(img);
 	}
 	
-	// 단순 이미지 전체조회
+	// 상품, 공지와 관련된 이미지 전체 조회
 	@Transactional(readOnly = true)
-	public List<Img> findAllImgs() {
-		return imgRepository.findAll();
+	public List<Img> findAllImgs(Integer product_number, Integer info_number) {
+		if(product_number != null) { // 상품 번호가 있다면 상품 번호와 일치하는 이미지 반환
+			return imgRepository.findByProductNumber(product_number);
+		} else if(info_number != null){ // 공지 번호가 있다면 공지 번호와 일치하는 이미지 반환
+			return imgRepository.findByProductNumber(info_number);
+		} else {
+			return null;
+		}
 	}
+	
+	// 이미지 삭제 
+	@Transactional
+	public void deleteImgs(Integer product_number, Integer info_number) throws IOException {
+		if(product_number != null) { // 상품 번호가 있다면 상품 번호와 일치하는 이미지 반환
+			
+			// 시스템 폴더에 저장된 사진 파일 삭제
+			List<Img> imgArr = imgRepository.findByProductNumber(product_number);
+			
+			for(Img img : imgArr) {
+				Path imgPath = Paths.get("/Users/haru/SamsamImg/" + img.getImgUrl());
+				Files.deleteIfExists(imgPath);
+			}
+
+			// DB 에 저장된 데이터 삭제
+			imgRepository.deleteByProductNumber(product_number);
+		} else if(info_number != null){ // 공지 번호가 있다면 공지 번호와 일치하는 이미지 반환
+			
+			// 시스템 폴더에 저장된 사진 파일 삭제
+			List<Img> imgArr = imgRepository.findByInfoNumber(info_number);
+			
+			for(Img img : imgArr) {
+				Path imgPath = Paths.get("/Users/haru/SamsamImg/" + img.getImgUrl());
+				Files.deleteIfExists(imgPath);
+			}
+
+			// DB 에 저장된 데이터 삭제
+			imgRepository.deleteByInfoNumber(info_number);
+		}	
+	}
+	
 	
 	// 페이징 이미지 전체조회
 	@Transactional(readOnly = true)
@@ -49,17 +92,5 @@ public class ImgService {
 		return imgRepository.findAll(pageable);
 	}
 	
-	@Transactional(readOnly = true)
-	public Img findImgById(Integer img_number) {
-		return imgRepository.findById(img_number).orElse(null);
-	}
-	
-	@Transactional
-	public void deleteImgById(Integer img_number) {
-		imgRepository.deleteById(img_number);
-	}
-	
-	public boolean existsByImg(Integer img_number) {
-		return imgRepository.existsById(img_number);
-	}
 }
+

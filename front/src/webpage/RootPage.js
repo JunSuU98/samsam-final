@@ -13,6 +13,7 @@ import SellProductButton from "../product/button/SellProductButton";
 import LoginButton from "../member/component/button/LoginButton";
 import MemberHeader from "../member/page/MemberHeader";
 
+import ProductSearchForm from "../product/component/ProductSearchForm";
 
 function Root({handleStorageChange, memberId}){
 
@@ -30,7 +31,9 @@ function Root({handleStorageChange, memberId}){
 
 
             {/* 상품 전체 조회 테이블 컴포넌트 */}
+            <ProductSearchForm />
 
+            {/* 상품 페이징 컴포넌트 */}
 
             {/* 공지사항 조회 링크 */}
 

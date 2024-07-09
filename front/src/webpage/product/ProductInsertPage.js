@@ -6,9 +6,12 @@ import { Button, Form, Image, Row, Col } from 'react-bootstrap';
 
 import GoBackButton from "../../member/component/button/GoBackButton";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
-function ProductSellPage({handleStorageChange, memberId}) {
+function ProductInsertPage({handleStorageChange, memberId}) {
+
+    const navigate = useNavigate();
 
     // form 용 데이터 (Product) 
     const [productFormData, setProductFormData] = useState({
@@ -16,7 +19,7 @@ function ProductSellPage({handleStorageChange, memberId}) {
         product_content: '',
         product_price: '',
         product_category: '',
-        member_id: memberId
+        member_id: sessionStorage.getItem("member_id")
     });
 
     // form 입력 감지 핸들러
@@ -27,25 +30,30 @@ function ProductSellPage({handleStorageChange, memberId}) {
             [name]: value // 속성 계산명 문법을 사용해서 동적으로 객체의 속성을 생성하고 값을 넣는다
         }));
 
-        if (name === 'member_id'){ // id input 의 입력값이 변경될 때 idCheckResult 를 0 으로 초기화한다
-            // setIdCheckResult(0);
-        }
     }
 
     // 이미지용 배열 변수
-    const [selectedFiles, setSelectedFiles] = useState([]);
+    const [selectedFiles, setSelectedFiles] = useState([]); // 실제 이미지 파일 배열
+    const [previewURLs, setPreviewURLs] = useState([]); // 이미지 미리보기 url 배열
 
     const handleFileChange = (event) => {
+
         const files = Array.from(event.target.files);
+
         if (selectedFiles.length + files.length > 10) {
             alert("최대 10개의 이미지만 업로드할 수 있습니다.");
         return;
         }
+
         const newFiles = files.map(file => ({
             file,
             previewURL: URL.createObjectURL(file),
         }));
-        setSelectedFiles(prevFiles => [...prevFiles, ...newFiles]);
+
+        setSelectedFiles(prevFiles => [...prevFiles, ...files]);
+        setPreviewURLs(prevURLs => [...prevURLs, ...newFiles.map(file => file.previewURL)]);
+
+        console.log("selectFiles: ", selectedFiles);
     };
 
     const handleSubmit = async (e) => {
@@ -61,7 +69,6 @@ function ProductSellPage({handleStorageChange, memberId}) {
             
             // 응답에서 productNumber를 받는다
             const productNumber = productResponse.data.productNumber;
-            console.log("product number !!! ",productNumber);
 
             // productNumber를 포함하여 이미지 데이터를 제출한다 
             const formData = new FormData();
@@ -72,16 +79,14 @@ function ProductSellPage({handleStorageChange, memberId}) {
                 formData.append("images", file);
             });
 
-            console.log("form data!!! " , formData);
-
-            await axios.post("/img/insert", formData, {
+            await axios.post("/api/img/insert", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
             });
 
             // 상품 상세 페이지로 이동
-            // window.location.href = `/product/${productNumber}`;
+            navigate(`/products/${productNumber}`);
 
         } catch (error) {
             console.error("상품 및 이미지 업로드 중 오류 발생", error);
@@ -89,10 +94,12 @@ function ProductSellPage({handleStorageChange, memberId}) {
     };
 
 
-
+    // 사진 업로드 취소 핸들러
     const handleRemoveFile = (index) => {
         const newFiles = selectedFiles.filter((_, i) => i !== index);
+        const newURLs = previewURLs.filter((_, i) => i !== index);
         setSelectedFiles(newFiles);
+        setPreviewURLs(newURLs);
     };
 
 
@@ -118,10 +125,10 @@ function ProductSellPage({handleStorageChange, memberId}) {
                 </Form.Group>
 
                 <Row>
-                {selectedFiles.map((file, index) => (
+                {previewURLs.map((url, index) => (
                     <Col key={index} xs={6} md={4} lg={3} className="mb-3">
                     <div className="position-relative">
-                        <Image src={file.previewURL} thumbnail />
+                        <Image src={url} thumbnail />
                         <Button
                         variant="danger"
                         size="sm"
@@ -170,4 +177,4 @@ function ProductSellPage({handleStorageChange, memberId}) {
 
 }
 
-export default ProductSellPage;
+export default ProductInsertPage;

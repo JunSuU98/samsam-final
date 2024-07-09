@@ -3,8 +3,11 @@ import axios from "axios";
 
 import Button from 'react-bootstrap/Button';
 
+import { useNavigate } from "react-router-dom";
 
 function LogoutButton({handleStorageChange}){
+
+    const navigate = useNavigate();
 
     // sessionStorage 에 저장했던 모든 정보들을 삭제한다 
     const handleLogout = async () => {
@@ -33,6 +36,8 @@ function LogoutButton({handleStorageChange}){
 
         sessionStorage.clear();
         handleStorageChange();
+
+        navigate("/");
     }
 
     return (
