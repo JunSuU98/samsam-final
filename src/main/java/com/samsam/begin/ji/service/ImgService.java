@@ -47,7 +47,7 @@ public class ImgService {
 		if(product_number != null) { // 상품 번호가 있다면 상품 번호와 일치하는 이미지 반환
 			return imgRepository.findByProductNumber(product_number);
 		} else if(info_number != null){ // 공지 번호가 있다면 공지 번호와 일치하는 이미지 반환
-			return imgRepository.findByProductNumber(info_number);
+			return imgRepository.findByInfoNumber(info_number);
 		} else {
 			return null;
 		}

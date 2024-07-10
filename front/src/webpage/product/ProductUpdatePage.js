@@ -104,7 +104,6 @@ function ProductUpdatePage({handleStorageChange, memberId}) {
             }
         ));
 
-        // setSelectedFiles(prevFiles => [...prevFiles, ...files]);
         setSelectedFiles(prevFiles => [...prevFiles, ...testArr]);
         setPreviewURLs(prevURL => [...prevURL, ...newFiles.map(file => file.previewURLs)]);
 

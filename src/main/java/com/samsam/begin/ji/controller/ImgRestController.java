@@ -50,7 +50,7 @@ public class ImgRestController {
 	@GetMapping("/api/img/select")
 	public List<Img> getImgs(@RequestParam(name = "product_number", required = false) Integer product_number 
 			, @RequestParam(name = "info_number", required = false) Integer info_number) {
-
+		
 		return imgService.findAllImgs(product_number, info_number);
 	}
 	

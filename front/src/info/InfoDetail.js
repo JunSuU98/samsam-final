@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import CommentForm from './CommentForm';
 import CommentList from './CommentList';
+import Carousel from 'react-bootstrap/Carousel';
+
 
 const InfoDetail = () => {
 	const { infoNumber } = useParams();
@@ -10,8 +12,12 @@ const InfoDetail = () => {
 	const [comments, setComments] = useState([]);
 	const navigate = useNavigate();
 
+    const [imgData, setImgData] = useState([]);
+
+
 	useEffect(() => {
 		fetchInfoDetail();
+		fetchImgs();
 		fetchComments();
 	}, [infoNumber]);
 
@@ -19,10 +25,20 @@ const InfoDetail = () => {
 		try {
 			const response = await axios.get(`/api/select/${infoNumber}`);
 			setInfoDetail(response.data);
+
+			
 		} catch (error) {
 			console.error('Error fetching info detail:', error);
 		}
 	};
+
+	const fetchImgs = async () => {
+		// 공지 번호와 일치하는 이미지들을 가져온다 
+		console.log("fetch infoNumber: ", infoNumber)
+		const imgResponse = await axios.get(`/api/img/select?info_number=${infoNumber}`);
+		setImgData(imgResponse.data);
+		console.log('image data: ', imgResponse.data)
+	}
 
 	const fetchComments = async () => {
 		try {
@@ -68,6 +84,17 @@ const InfoDetail = () => {
 			<div className="info-item mt-4">
 				<h4>{infoDetail.infoTitle}</h4>
 				<hr />
+				{/* 이미지 보여주기 */}
+				{/* react bootstrap Carousels 사용 이미지 띄우기 */}
+				<Carousel style={{width: '20rem', height: 'auto'}} interval={null}>
+					{imgData.map((img, index) => (
+						<Carousel.Item key={index} >
+							<img src={`/img/${img.imgUrl}`} style={{width: '20rem', height: '20rem', objectFit: 'contain'}}/>
+						</Carousel.Item>
+					))}
+				</Carousel>
+
+
 				<p>{infoDetail.infoContent}</p>
 			</div>
 
