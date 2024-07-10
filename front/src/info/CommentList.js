@@ -15,10 +15,14 @@ const CommentList = ({ comments, fetchComments }) => {
         setUpdatedContent(''); // 수정할 댓글 내용 초기화
     };
 
+    // 댓글 수정
     const submitUpdate = async (commentId, updatedContent) => {
         try {
             const response = await axios.put(`/api/comments/${commentId}`, {
-                content: updatedContent
+                content: updatedContent,
+                member_id: sessionStorage.getItem("member_id")
+            }, {
+                headers: {"Content-Type": "application/json"}
             });
             console.log('댓글 수정 성공:', response.data);
             setEditMode(null);
@@ -35,9 +39,10 @@ const CommentList = ({ comments, fetchComments }) => {
         }
     };
 
+    // 댓글 삭제
     const deleteComment = async (commentId) => {
         try {
-            const response = await axios.delete(`/api/comments/${commentId}`);
+            const response = await axios.delete(`/api/comments/${commentId}/${sessionStorage.getItem("member_id")}`);
             console.log('댓글 삭제 성공:', response.data);
             fetchComments(); // 삭제 후 댓글 목록 다시 불러오기
             alert('댓글이 삭제되었습니다.');
@@ -85,10 +90,19 @@ const CommentList = ({ comments, fetchComments }) => {
                         <>
                             <p><strong>{comment.userId}</strong>: {comment.content}</p>
                             <p className="comment-date">{formatDate(new Date(comment.commentDate))}</p>
-                            <div className="comment-actions">
+
+                            {/* 댓글 작성자와 member_id 가 일치할 때만 버튼 표시 */}
+                            { comment.userId === sessionStorage.getItem("member_id") ?
+                                <div className="comment-actions">
+                                    <button onClick={() => showUpdateForm(comment.commentId)}>수정</button>
+                                    <button onClick={() => deleteComment(comment.commentId)}>삭제</button>
+                                </div>
+                                : <div></div>
+                            }
+                            {/* <div className="comment-actions">
                                 <button onClick={() => showUpdateForm(comment.commentId)}>수정</button>
                                 <button onClick={() => deleteComment(comment.commentId)}>삭제</button>
-                            </div>
+                            </div> */}
                         </>
                     )}
                 </div>

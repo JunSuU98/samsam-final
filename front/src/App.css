@@ -36,3 +36,170 @@
     transform: rotate(360deg);
   }
 }
+
+/* 홈 버튼 스타일 */
+.main-title.h1 {
+   margin: 20px 0px 20px;
+}
+
+/* 마우스 클릭할 때 */
+.clicked{
+   color: gray;
+}
+
+/* 마우스 클릭 뗄 때 */
+.unclicked {
+   color: black;
+}
+
+/* 문의 목록 배치 */
+.pagination-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0px;
+}
+
+/* 문의 목록 조절 */
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+
+/* 드롭다운 초기 */
+.custom-dropdown {
+   background-color: rgba(255, 255, 255, 0);
+   color: black;
+   margin-right: 10px;
+   height: 45px;
+}
+
+/* 드롭다운 메뉴 */
+.custom-dropdown-menu {
+    width: 30px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+}
+
+/* 드롭다운 아이템*/
+.custom-dropdown-menu .dropdown-item {
+    color: black;
+}
+
+/* 드롭다운 메뉴 호버 색상 */
+.custom-dropdown-menu .dropdown-item:hover {
+    background-color: #ced4da; 
+    color: black;
+}
+
+/* 문의 등록 버튼 */
+.cs-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    display: block;
+}
+
+/* 문의 등록 버튼 색상 조절 */
+.cs-btn .btn-primary {
+    background-color: #ced4da;
+    border-color: #ced4da;
+    color: #3b3b3b;
+    font-weight: bold;
+}
+
+/* 문의 등록 버튼 호버*/
+.cs-btn .btn-primary:hover {
+    background-color: #5C636A;
+    border-color: #5C636A;
+    color: white;
+}
+
+/* 문의 목록 타이틀 */
+.register-text {
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+/* 문의 목록 */
+.cs-list {
+   margin-top: 20px;
+   margin-bottom: 10px;
+}
+
+/* 검색 버튼 */
+.search-btn {
+   margin-right: auto;
+   min-width: 60px;
+   margin-top: 10px;
+   max-height: 45px;
+   background-color: #3b3b3b;
+   color: white;
+   border: 1px solid #3b3b3b;
+}
+
+/* 검색 버튼 호버 */
+.search-btn:hover {
+   margin-right: auto;
+   min-width: 60px;
+   margin-top: 10px;
+   max-height: 45px;
+   background-color: #3b3b3b;
+   border: 1px solid #ced4da;
+}
+
+/* 검색 박스 */
+.search-box {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: auto;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* 테이블 설정 */
+.table td, .table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 문의 상세 보기 버튼 */
+.table .btn-info {
+    float: right;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid #ced4da;
+      transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* 문의 상세 보기 버튼 호버 */
+.table .btn-info:hover {
+    background-color: #21E6C1;
+    border-color: #21E6C1;
+    color: #3b3b3b;
+    font-weight: bold;
+}
+
+/* 페이징 */
+.pagination-controls {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
+}
+
+/* 문의 목록 버튼 */
+.cs-select-btn {
+   background-color: #ced4da;
+    border-color: #ced4da;
+    color: #3b3b3b;
+    font-weight: bold;
+}
+
+

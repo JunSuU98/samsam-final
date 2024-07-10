@@ -16,7 +16,7 @@ const EditInfo = () => {
 
 	const fetchInfoDetail = async () => {
 		try {
-			const response = await axios.get(`/select/${infoNumber}`);
+			const response = await axios.get(`/api/select/${infoNumber}`);
 			setInfoDetail(response.data);
 			setEditTitle(response.data.infoTitle);
 			setEditContent(response.data.infoContent);
@@ -34,14 +34,14 @@ const EditInfo = () => {
 		 const today = new Date().toISOString().split('T')[0];
 
 		try {
-			await axios.put('/update', {
+			await axios.put('/api/update', {
 				infoNumber: infoNumber,
 				infoTitle: editTitle,
 				infoContent: editContent,
 					infoDate: today
 			
 			});
-			navigate(`/InfoDetail/${infoNumber}`);
+			navigate(`/info/${infoNumber}`);
 		} catch (error) {
 			console.error('Error updating info:', error);
 		}

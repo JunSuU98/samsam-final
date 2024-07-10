@@ -9,7 +9,12 @@ const CommentForm = ({ infoNumber, fetchComments }) => {
     try {
         const response = await axios.post('/api/comments', {
             content: commentContent,
-            infoNumber: parseInt(infoNumber)
+            infoNumber: parseInt(infoNumber),
+            member_id: sessionStorage.getItem("member_id")
+        }, {
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
         console.log('Comment submitted successfully:', response.data);
         setCommentContent('');

@@ -74,7 +74,8 @@ public class CommentController {
     	 String content = requestMap.get("content");
     	 String infoNumberStr = requestMap.get("infoNumber");
     	 Integer infoNumber = Integer.parseInt(infoNumberStr);
-        String userId = (String) httpSession.getAttribute("member_id");
+    	 String userId = requestMap.get("member_id");
+//        String userId = (String) httpSession.getAttribute("member_id");
 
         if (userId == null) {
             return new ResponseEntity<>("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
@@ -86,8 +87,10 @@ public class CommentController {
 
     @PutMapping("/api/comments/{commentId}")
     public ResponseEntity<?> updateComment(@PathVariable("commentId") Integer commentId,
-            @RequestParam("content") String content, HttpSession httpSession) {
-        String userId = (String) httpSession.getAttribute("member_id");
+            @RequestBody Map<String, String> requestMap) {
+        String userId = requestMap.get("member_id");
+        String content = requestMap.get("content");
+//        String userId = (String) httpSession.getAttribute("member_id");
 
         if (userId == null) {
             return new ResponseEntity<>("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);
@@ -101,9 +104,8 @@ public class CommentController {
         }
     }
 
-    @DeleteMapping("/api/comments/{commentId}")
-    public ResponseEntity<?> deleteComment(@PathVariable("commentId") Integer commentId, HttpSession httpSession) {
-        String userId = (String) httpSession.getAttribute("member_id");
+    @DeleteMapping("/api/comments/{commentId}/{userId}")
+    public ResponseEntity<?> deleteComment(@PathVariable("commentId") Integer commentId, @PathVariable("userId") String userId) {
 
         if (userId == null) {
             return new ResponseEntity<>("로그인이 필요합니다.", HttpStatus.UNAUTHORIZED);

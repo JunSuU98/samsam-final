@@ -75,7 +75,7 @@ const InfoList = () => {
                             <tr key={info.infoNumber} className="text-center">
                                 <td>{info.infoNumber}</td>
                                 <td>
-                                     <Link to={`/InfoDetail/${info.infoNumber}`} className="btn btn-link">
+                                     <Link to={`/info/${info.infoNumber}`} className="btn btn-link">
                                         {info.infoTitle}
                                     </Link>
                                 </td>
@@ -121,9 +121,13 @@ const InfoList = () => {
                 </div>
             </form>
 
-            <div className="text-center mt-4">
-                <Link to="/InsertInfoForm" className="btn btn-primary">공지 등록하기</Link>
-            </div>
+            {/* 관리자로 로그인 했을 때만 보여지게 한다 */}
+            { sessionStorage.getItem("member_id") === "admin" &&
+                <div className="text-center mt-4">
+                    <Link to="/info/insert" className="btn btn-primary">공지 등록하기</Link>
+                </div>
+            }
+            
         </div>
     );
 };

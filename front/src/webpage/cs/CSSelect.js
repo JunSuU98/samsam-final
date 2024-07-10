@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../../src/App.css';
 
 import ToMainPageButton from '../../member/component/button/ToMainPageButton';
 

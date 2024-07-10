@@ -13,7 +13,6 @@ import KakaoCallbackPage from "../member/page/KakaoCallbackPage";
 import IdSearchPage from "../member/page/IdSearchPage";
 import PwSearchPage from "../member/page/PwSearchPage";
 
-
 // Product Page Import
 import ProductInsertPage from "../webpage/product/ProductInsertPage";
 import ProductUpdatePage from "../webpage/product/ProductUpdatePage";
@@ -24,6 +23,15 @@ import CSSelect from "../webpage/cs/CSSelect";
 import CSSelectDetail from "../webpage/cs/CSSelectDetail";
 import CSInsert from "../webpage/cs/CSInsert";
 import CSUpdate from "../webpage/cs/CSUpdate";
+
+import CSTestSelect from "../component/CsSelect";
+
+// Info Page Import
+import InfoInsert from "../webpage/info/InfoInsert";
+import InfoSelect from "../webpage/info/InfoSelect";
+import InfoDetail from "../info/InfoDetail";
+import InfoUpdate from "../webpage/info/InfoUpdate";
+
 
 function RouterApp() {
 
@@ -102,19 +110,19 @@ function RouterApp() {
         //  공지사항 라우팅
         {
             path: "/info",
-            element: <div>전체 조회</div>
+            element: <InfoSelect />
         },
         {
-            path: "/info/:info_number",
-            element: <div>상세 조회</div>
+            path: "/info/:infoNumber",
+            element: <InfoDetail />
         },
         {
             path: "/info/insert",
-            element: <div>생성</div>
+            element: <InfoInsert />
         },
         {
-            path: "/info/update/:info_number",
-            element: <div>수정</div>
+            path: "/info/update/:infoNumber",
+            element: <InfoUpdate />
         },
 
         // 고객문의 라우팅 

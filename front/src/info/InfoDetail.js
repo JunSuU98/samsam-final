@@ -34,7 +34,7 @@ const InfoDetail = () => {
 	};
 
 	const handleEditClick = () => {
-		navigate(`/edit/${infoNumber}`);
+		navigate(`/info/update/${infoNumber}`);
 	};
 
 	const handleDeleteClick = async () => {
@@ -43,16 +43,13 @@ const InfoDetail = () => {
 				const response = await axios.delete(`/api/delete/${infoNumber}`);
 				console.log('공지사항 삭제 성공:', response.data);
 				alert('삭제가 완료되었습니다.공지 사항 리스트로 돌아갑니다 ...');
-				navigate('/InfoList'); // 리스트 페이지로 이동
+				navigate('/info'); // 리스트 페이지로 이동
 			} catch (error) {
 				console.error('공지사항 삭제 실패:', error);
 				alert('공지사항 삭제 중 오류가 발생했습니다. 다시 시도해주세요.');
 			}
 		}
 	};
-
-
-
 
 	if (!infoDetail) {
 		return (
@@ -80,15 +77,19 @@ const InfoDetail = () => {
 
 			<div className="row mt-4">
 				<div className="col-md-4">
-					<Link to="/InfoList" className="btn btn-custom btn-block">공지 목록 보러 가기</Link>
+					<Link to="/info" className="btn btn-custom btn-block">공지 목록 보러 가기</Link>
 				</div>
-				<div className="col-md-4">
-					<button onClick={handleEditClick} className="btn btn-primary btn-block">수정</button>
-					<button onClick={handleDeleteClick} className="btn btn-danger btn-block">삭제</button>
 
-				</div>
+				{/* 관리자로 로그인 했을 때만 보인다 */}
+				{ sessionStorage.getItem("member_id") === "admin" &&
+					<div className="col-md-4">
+						<button onClick={handleEditClick} className="btn btn-primary btn-block">수정</button>
+						<button onClick={handleDeleteClick} className="btn btn-danger btn-block">삭제</button>
+					</div>
+				}
 			</div>
 
+			{/* 공지사항 댓글 입력 form */}
 			<CommentForm infoNumber={infoNumber} fetchComments={fetchComments} />
 			<CommentList comments={comments} fetchComments={fetchComments} />
 		</div>
