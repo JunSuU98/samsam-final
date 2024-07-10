@@ -3,6 +3,7 @@ package com.samsam.begin.hong.service;
 //import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,4 +51,11 @@ public class CSService {
 	public Page<CI> CISearchContent(String searchContent, Pageable pageable) {
 		return csRepository.findByCsContentContaining(searchContent, pageable);
 	}
+	
+	// 회원 아이디로 문의 전체 조회 
+    public Page<CI> searchCIByMemberId(String member_id, int page, int size) {
+    	Pageable pageable = PageRequest.of(page, size);
+
+    	return csRepository.findByMemberId(member_id, pageable);
+    }
 }

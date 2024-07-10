@@ -5,6 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.samsam.begin.chan.entity.Product;
+import java.util.List;
+
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
@@ -14,4 +16,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     
     Page<Product> findByProductCategory(String product_category, Pageable pageable);
     
+    Page<Product> findByMemberId(String memberId, Pageable pageable);
 }

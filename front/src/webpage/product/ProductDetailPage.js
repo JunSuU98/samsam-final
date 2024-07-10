@@ -4,8 +4,9 @@ import Carousel from 'react-bootstrap/Carousel';
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
+import WishListAddButton from "../../wishlist/component/button/WishlistAddButton";
 
-function ProductDetailPage({memberId}){
+function ProductDetailPage({handleStorageChange, memberId}){
 
     const {productNumber} = useParams();
     const navigate = useNavigate();
@@ -13,9 +14,33 @@ function ProductDetailPage({memberId}){
     const [productData, setProductData] = useState({});
     const [imgData, setImgData] = useState([]);
 
+    const [checked, setChecked] = useState(false);
+
     useEffect(() => {
         loadProduct();
+        fetchWishlist();
     }, []);
+
+    const fetchWishlist = async () => {
+        try {
+
+            const wishlistResponse = await axios.get(`/api/wishlist/user/${memberId}`); // List-Wishlist
+            const testArr = wishlistResponse.data.map(wish => wish['productNumber']);
+            // 찜 목록에 현재 상품이 이미 있는지 확인
+            await setChecked(testArr.includes(parseInt(productNumber)));
+            console.log(wishlistResponse.data)
+            console.log("testarr: ", testArr)
+            console.log("checked: ", checked);
+            console.log("product check: ", testArr.includes(parseInt(productNumber)));
+
+        } catch (error) {
+            console.log("wishlist err: ", error );
+        }
+    }
+
+    const handleCheckChange = (isChecked) => {
+        setChecked(isChecked);
+    }
 
     // 일부 조회 axios 요청
     const loadProduct = async () => {
@@ -65,7 +90,13 @@ function ProductDetailPage({memberId}){
             <p>상태: {productData.productStatus}</p>
 
             {/* 찜하기, 채팅하기 버튼 */}
-            <Button>찜하기</Button>
+            {/* <Button>찜하기</Button> */}
+            <WishListAddButton 
+                handleStorageChange={handleStorageChange} 
+                memberId={memberId} 
+                productNumber={productNumber}
+                checked={checked}
+                onHandleChecked={handleCheckChange}/>
             <Button>채팅하기</Button>
 
             { memberId === productData.memberId &&

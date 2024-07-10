@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Button from "react-bootstrap/esm/Button";
 
-import NorModal from "../../modal/LoginModal";
+import LoginModal from "../../modal/LoginModal";
 
 function LoginButton({ handleStorageChange }) {
 
@@ -15,7 +15,7 @@ function LoginButton({ handleStorageChange }) {
                 로그인
             </Button>
 
-            <NorModal show={show} setShow={setShow} handleStorageChange={handleStorageChange}/>
+            <LoginModal show={show} setShow={setShow} handleStorageChange={handleStorageChange}/>
         </div>
 
     )

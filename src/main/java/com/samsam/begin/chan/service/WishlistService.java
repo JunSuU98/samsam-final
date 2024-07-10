@@ -4,6 +4,7 @@ import com.samsam.begin.chan.entity.Wishlist;
 import com.samsam.begin.chan.repository.WishlistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class WishlistService {
         this.wishlistRepository = wishlistRepository;
     }
 
+    @Transactional
     public Wishlist addToWishlist(String member_id, int product_number) {
         Wishlist wishlist = new Wishlist();
         wishlist.setMemberId(member_id);
@@ -24,7 +26,19 @@ public class WishlistService {
         return wishlistRepository.save(wishlist);
     }
 
+    @Transactional(readOnly = true)
     public List<Wishlist> getWishlistByUserId(String member_id) {
         return wishlistRepository.findByMemberId(member_id);
     }
+    
+    @Transactional
+    public void deleteWishlistItem(String memberId, int productNumber) {
+    	wishlistRepository.deleteByMemberIdAndProductNumber(memberId, productNumber);
+    }
+    
+    @Transactional
+    public void deleteAllwishlist(String member_id) {
+    	wishlistRepository.deleteByMemberId(member_id);
+    }
 }
+

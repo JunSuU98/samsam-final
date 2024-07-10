@@ -14,10 +14,6 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-//    public Page<Product> getAllProducts(Pageable pageable) {
-//        return productRepository.findAll(pageable);
-//    }
-    
     // 페이징 검색 전체 조회
     public Page<Product> findAllProduct(String searchFilter, String searchQuery, int page, int size){
     	Pageable pageable = PageRequest.of(page, size);
@@ -36,9 +32,14 @@ public class ProductService {
     	return productRepository.findAll(pageable);
     }
     
-    
-    
+    // 회원 아이디로 상품 전체 조회 
+    public Page<Product> searchProductByMemberId(String member_id, int page, int size) {
+    	Pageable pageable = PageRequest.of(page, size);
 
+    	return productRepository.findByMemberId(member_id, pageable);
+    }
+    
+    
     public Page<Product> searchProductsByName(String name, Pageable pageable) {
         return productRepository.findByProductTitleContaining(name, pageable);
     }

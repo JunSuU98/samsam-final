@@ -208,6 +208,15 @@ function ProductUpdatePage({handleStorageChange, memberId}) {
                         <option value="취미용품">취미용품</option>
                         <option value="생활용품">생활용품</option>
                 </Form.Select>
+
+                <br/>
+
+                <Form.Select aria-label="Default select example" onChange={handleChange} name="product_status" value={productFormData.product_status}>
+                        <option>상태</option>
+                        <option value="판매중">판매중</option>
+                        <option value="예약중">예약중</option>
+                        <option value="거래완료">거래완료</option>
+                </Form.Select>
                 
                 <Form.Group className="mb-3">
                     <Form.Label>가격</Form.Label>
@@ -219,7 +228,7 @@ function ProductUpdatePage({handleStorageChange, memberId}) {
                     <Form.Control as="textarea" rows={5} type="text" placeholder="상품 설명을 입력하세요" name="product_content" id="product_content" value={productFormData.product_content} onChange={handleChange}/>
                 </Form.Group>
 
-                <Button type="submit">상품 등록</Button>
+                <Button type="submit">상품 수정</Button>
                 <GoBackButton  text={"취소"}/>
 
             </Form>

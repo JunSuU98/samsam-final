@@ -99,7 +99,7 @@ function RouterApp() {
         },
         {
             path: "/products/:productNumber",
-            element: <ProductDetailPage memberId={memberId}/>
+            element: <ProductDetailPage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/products/update/:productNumber",

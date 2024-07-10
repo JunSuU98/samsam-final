@@ -74,7 +74,7 @@ public class ProductController {
 			, @RequestParam(name = "page", defaultValue = "1") int page
 			, @RequestParam(name = "size", defaultValue = "10") int size){
     	
-    	Page<Product> productPage = productService.findAllProduct(searchFilter, searchQuery, page - 1, size);
+		Page<Product> productPage = productService.findAllProduct(searchFilter, searchQuery, page - 1, size);
     	
     	if(productPage != null) {
     		
@@ -118,9 +118,31 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
-//	@GetMapping("/search")
-//    public ResponseEntity<Page<Product>> searchProductsByName(@RequestParam("name") String name, Pageable pageable) {
-//        Page<Product> products = productService.searchProductsByName(name, pageable);
-//        return new ResponseEntity<>(products, HttpStatus.OK);
-//    }
+    
+    // 회원 판매 상품 조회
+    @GetMapping("/member")
+    public ResponseEntity<Map<String, Object>> getMemberAllProduct(
+    		@RequestParam(name = "member_id", required = false) String member_id
+			, @RequestParam(name = "page", defaultValue = "1") int page
+			, @RequestParam(name = "size", defaultValue = "10") int size){
+    	
+    	Page<Product> productPage = productService.searchProductByMemberId(member_id, page - 1, size);
+    	
+    	if(productPage != null) {
+    		
+    		List<Product> productList = productPage.getContent();
+    		int totalPage = productPage.getTotalPages();    		
+
+    		Map<String, Object> responseMap = new HashMap<>();
+			responseMap.put("productList", productList);
+			responseMap.put("totalPage", totalPage);
+			responseMap.put("currentPage", page);
+		
+			return new ResponseEntity<>(responseMap, HttpStatus.OK);
+    	} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
+    	
+    }
+    
 }

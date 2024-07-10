@@ -14,4 +14,7 @@ import com.samsam.begin.hong.entity.CI;
 public interface CSRepository extends JpaRepository<CI, Integer> {
 	Page<CI> findByCsTitleContaining(String searchKeyword, Pageable pageable);
     Page<CI> findByCsContentContaining(String searchContent, Pageable pageable);
+    
+    
+    Page<CI> findByMemberId(String memberId, Pageable pageable);
 }
