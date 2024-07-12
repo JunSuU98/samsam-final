@@ -203,3 +203,145 @@
 }
 
 
+/********** member>modal>LoginModal.js **********/
+
+/* 닫기 버튼 아래 라인 없애기 */
+.login-modal-close .modal-header {
+  border-bottom: none;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+/* 로고 */
+.login-modal-header {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 11.5px;
+   font-family: 'Jua';
+}
+
+/* 제목에 여백 추가 */
+.login-modal-header h1 {
+   margin-left: 10px;
+   margin-top: 10px;
+   font-size: 50px;
+}
+
+/* 아이디, 비밀번호 입력 칸, 로그인 버튼 위치 */
+.login-modal-input {
+   margin: 25px 15px 30px 15px;
+   
+}
+
+/* 아이디 input 박스 높이 조정 */
+.input-id .form-control {
+  height: 45px;
+}
+
+/* 비밀번호 input 박스 높이 조정 */
+.input-password .form-control {
+  height: 45px;
+}
+
+/* 로그인 버튼 */
+.login-modal-loginbtn {
+   margin-bottom: 30px;
+   background-color: #21E6C1 !important;
+   color: white !important;
+   border: none !important;
+   margin-right: 15px;
+   max-width: 436.4px;
+   width: 100%;
+   height: 50px;
+   font-weight: bold !important;
+   font-size: 20px !important;
+   
+}
+
+/* 로그인 버튼 호버 */
+.login-modal-loginbtn:hover {
+  background-color: #15bd9b!important; /* 마우스 호버 시 배경색 변경 */
+}
+
+/* 아이디 찾기, 비밀번호 찾기 위치 */
+.login-modal-search {
+   margin-left: 15px;
+   margin-bottom: 70px;
+}
+
+/* 아이디 찾기 */
+.login-modal-searchid {
+   margin-right: 10px;
+   color: #B4B4B4;
+   font-weight: bold;
+}
+
+/* 비밀번호 찾기 */
+.login-modal-searchpassword {
+   margin-right: 10px;
+   color: #B4B4B4;
+   font-weight: bold;
+}
+
+/* 회원가입 버튼 위치 */
+.login-modal-join {
+   margin-left: auto;
+   margin-right: 15px;
+}
+
+/* 회원가입 버튼 스타일 */
+.login-modal-joinbtn {
+   color: #21E6C1;
+   font-weight: bold;
+}
+
+/* Footer 라인 없애기 */
+.login-modal-sns .modal-footer {
+  border-top: none; /* Modal.Footer의 상단 라인 없애기 */
+}
+
+
+
+/* 간편 로그인 */
+.login-modal-sns-text {
+  display: flex;
+  align-items: center;
+  color: #7B7B7B; /* 텍스트 색상 */
+  font-weight: bold; /* 텍스트 굵기 */
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+/* 간편 로그인 왼쪽 라인 */
+.login-modal-sns-text::before {
+content: '';
+flex-grow: 1;
+background: #7B7B7B;
+height: 0.5px;
+margin: 0 30px;
+
+}
+
+/* 간편 로그인 오른쪽 라인 */
+.login-modal-sns-text::after {
+content: '';
+flex-grow: 1;
+background: #7B7B7B;
+height: 0.5px;
+margin: 0 30px;
+}
+
+
+.login-modal-snsbtn {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  margin-bottom: 50px;
+  
+  
+}
+
+
+/************************************************/

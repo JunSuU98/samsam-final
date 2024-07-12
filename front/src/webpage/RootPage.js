@@ -8,7 +8,6 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 import PsearchFormTest from "../product/component/PsearchFormTest";
-// import ProductPaging from "../product/component/ProductPaging";
 import PpagingTest from "../product/component/PpagingTest";
 
 import ProductTable from "../product/component/ProductTable";
@@ -51,7 +50,6 @@ function Root({handleStorageChange, memberId}){
         console.log("categorySearch excute")
         if(eventKey === "전체"){
             // 전체 상품 조회 api 호출
-            // const response = await axios.get(`/api/products?page=1&size=10&searchFilter=${findData.searchFilter}&searchQuery=${findData.searchQuery}`);
             const response = await axios.get(`/api/products?page=${currentPage}&size=10&searchFilter=${findData.searchFilter}&searchQuery=${findData.searchQuery}`);
             setProductList(response.data.productList);
             setTotalPage(response.data.totalPage);
@@ -125,7 +123,6 @@ function Root({handleStorageChange, memberId}){
             <Link to={"/cs"} >고객문의</Link>
 
              {/* 채팅방 조회 */}
-            {/* <Link to="/chat-rooms">채팅방 목록</Link> */}
             <ChatListButton 
             handleStorageChange={handleStorageChange} 
                 memberId={memberId} />

@@ -10,7 +10,7 @@ function KakaoLoginButton() {
         <a href={`https://kauth.kakao.com/oauth/authorize?&client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code`}>
             <img 
             src={process.env.PUBLIC_URL + "/kakao_login.png"}
-            style={{width: '140px', height: '40px'}}
+            style={{width: '200px', height: '60px'}}
             />
         </a>
 

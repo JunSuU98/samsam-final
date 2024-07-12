@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Jua'; /* 사용할 폰트의 이름을 정의 */
+  src: url('./font/BMJUA_otf.otf'); /* 폰트 파일의 위치 */
+}
+
+@font-face {
+  font-family: 'Jua';
+  src: url('./font/BMJUA_ttf.ttf');
+}
