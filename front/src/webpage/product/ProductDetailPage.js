@@ -7,6 +7,8 @@ import { Button } from "react-bootstrap";
 import WishListAddButton from "../../wishlist/component/button/WishlistAddButton";
 import MemberHeader from "../../member/page/MemberHeader";
 
+import StartChatButton from "../../chat/component/StartChatButton";
+
 function ProductDetailPage({handleStorageChange, memberId}){
 
     const {productNumber} = useParams();
@@ -29,10 +31,6 @@ function ProductDetailPage({handleStorageChange, memberId}){
             const testArr = wishlistResponse.data.map(wish => wish['productNumber']);
             // 찜 목록에 현재 상품이 이미 있는지 확인
             await setChecked(testArr.includes(parseInt(productNumber)));
-            console.log(wishlistResponse.data)
-            console.log("testarr: ", testArr)
-            console.log("checked: ", checked);
-            console.log("product check: ", testArr.includes(parseInt(productNumber)));
 
         } catch (error) {
             console.log("wishlist err: ", error );
@@ -102,7 +100,14 @@ function ProductDetailPage({handleStorageChange, memberId}){
                         productNumber={productNumber}
                         checked={checked}
                         onHandleChecked={handleCheckChange}/>
-                    <Button>채팅하기</Button>
+                    
+                    <StartChatButton 
+                        handleStorageChange={handleStorageChange} 
+                        memberId={memberId} 
+                        productNumber={productNumber}
+                        checked={checked}
+                        onHandleChecked={handleCheckChange}
+                        productData={productData}/>
                 </>
             }
 
