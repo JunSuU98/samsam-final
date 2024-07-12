@@ -33,6 +33,12 @@ import InfoDetail from "../info/InfoDetail";
 import InfoUpdate from "../webpage/info/InfoUpdate";
 
 
+// Chat Import
+import ChatStart from "../chat/ChatStart";
+import ChatRoom from "../chat/ChatRoom";
+import ChatRoomList from "../chat/ChatRoomList";
+
+
 function RouterApp() {
 
     const [memberId, setMemberID] = useState('null');
@@ -141,7 +147,23 @@ function RouterApp() {
         {
             path: "/cs/update/:csNumber",
             element: <CSUpdate handleStorageChange={handleStorageChange} memberId={memberId}/>
+        },
+        //채팅 라우팅 테스터
+		{
+			path: "/chat-start",
+			element: <ChatStart />
+		},
+
+		{
+			path: "/chat-room/:roomId",
+			element: <ChatRoom handleStorageChange={handleStorageChange} memberId={memberId}/>
+		},
+		
+		{
+            path: "/chat-rooms",
+            element: <ChatRoomList handleStorageChange={handleStorageChange} memberId={memberId}/>
         }
+
 
     ]);
 

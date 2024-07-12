@@ -13,6 +13,8 @@ import PpagingTest from "../product/component/PpagingTest";
 
 import ProductTable from "../product/component/ProductTable";
 
+import ChatListButton from "../chat/component/ChatListButton";
+
 function Root({handleStorageChange, memberId}){
 
     // 검색과 페이징에 필요한 데이터 변수
@@ -122,6 +124,11 @@ function Root({handleStorageChange, memberId}){
             {/* 고객문의 조회 링크 */}
             <Link to={"/cs"} >고객문의</Link>
 
+             {/* 채팅방 조회 */}
+            {/* <Link to="/chat-rooms">채팅방 목록</Link> */}
+            <ChatListButton 
+            handleStorageChange={handleStorageChange} 
+                memberId={memberId} />
         </div>
 
     )

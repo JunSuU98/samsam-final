@@ -1,0 +1,91 @@
+/* ChatRoom.css */
+.chat-room-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.chat-room-header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.chat-room-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #e5ddd5;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-room-messages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-room-messages li {
+    margin-bottom: 10px;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.my-message {
+    align-self: flex-end;
+    background-color: #dcf8c6;
+    color: #000;
+}
+
+.other-message {
+    align-self: flex-start;
+    background-color: #fff;
+    color: #000;
+}
+
+.chat-room-input {
+    display: flex;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+}
+
+.chat-room-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.chat-room-input button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-room-input button:hover {
+    background-color: #45a049;
+}
+
+.message-timestamp {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.message-read-status {
+    font-size: 0.8em;
+    color: #4caf50;
+    margin-top: 5px;
+    text-align: right;
+}
