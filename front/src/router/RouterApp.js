@@ -60,19 +60,19 @@ function RouterApp() {
         // 회원, 로그인 라우팅
         {
             path: "/members/:member_id",
-            element: <MyPage />
+            element: <MyPage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/members/update/:member_id",
-            element: <MemberUpdatePage />
+            element: <MemberUpdatePage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/join",
-            element: <MemberJoinPage />
+            element: <MemberJoinPage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/admin",
-            element: <AdminPage />
+            element: <AdminPage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/naver-login-callback",
@@ -84,11 +84,11 @@ function RouterApp() {
         },
         {
             path: "/id-search-page",
-            element: <IdSearchPage />
+            element: <IdSearchPage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/pw-search-page",
-            element: <PwSearchPage />
+            element: <PwSearchPage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
 
 
@@ -103,44 +103,44 @@ function RouterApp() {
         },
         {
             path: "/products/update/:productNumber",
-            element: <ProductUpdatePage />
+            element: <ProductUpdatePage handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
 
 
         //  공지사항 라우팅
         {
             path: "/info",
-            element: <InfoSelect />
+            element: <InfoSelect handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/info/:infoNumber",
-            element: <InfoDetail />
+            element: <InfoDetail handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/info/insert",
-            element: <InfoInsert />
+            element: <InfoInsert handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/info/update/:infoNumber",
-            element: <InfoUpdate />
+            element: <InfoUpdate handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
 
         // 고객문의 라우팅 
         {
             path: "/cs",
-            element: <CSSelect />
+            element: <CSSelect handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/cs/:csNumber",
-            element: <CSSelectDetail memberId={memberId}/>
+            element: <CSSelectDetail handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/cs/insert",
-            element: <CSInsert memberId={memberId}/>
+            element: <CSInsert handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/cs/update/:csNumber",
-            element: <CSUpdate />
+            element: <CSUpdate handleStorageChange={handleStorageChange} memberId={memberId}/>
         }
 
     ]);

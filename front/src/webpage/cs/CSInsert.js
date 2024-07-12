@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import MemberHeader from '../../member/page/MemberHeader';
 
-const CSInsert = ({memberId}) => {
+const CSInsert = ({handleStorageChange, memberId}) => {
     const [csTitle, setCsTitle] = useState('');
     const [csContent, setCsContent] = useState('');
     const [csDate, setCsDate] = useState('');
@@ -48,6 +49,9 @@ const CSInsert = ({memberId}) => {
 
     return (
         <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
             <h1>samsamzo 고객 문의</h1>
             <h2>문의 등록</h2>
             <form onSubmit={handleFormSubmit}>

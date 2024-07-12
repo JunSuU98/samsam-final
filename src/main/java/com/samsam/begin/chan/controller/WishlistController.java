@@ -31,6 +31,7 @@ public class WishlistController {
         return new ResponseEntity<>(wishlist, HttpStatus.OK);
     }
     
+    
     // 찜목록 삭제
     @DeleteMapping("/{productNumber}/{memberId}")
     public void deleteWishlistItem(@PathVariable("productNumber") int productNumber,

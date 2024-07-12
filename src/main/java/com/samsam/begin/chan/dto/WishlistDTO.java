@@ -12,6 +12,6 @@ public class WishlistDTO {
 	private int wishlist_number;
 	private String member_id;
 	private int product_number;
-	
+	private String wishlist_create;
 
 }

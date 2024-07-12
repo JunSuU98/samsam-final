@@ -51,30 +51,18 @@ public class CSRestController {
 	
 	// 회원 id 로 문의 전체 조회
 	@GetMapping("/member")
-	public ResponseEntity<Map<String, Object>> getMemberCs(
-			@RequestParam(name = "member_id", required = false) String member_id
-			, @RequestParam(name = "page", defaultValue = "1") int page
-			, @RequestParam(name = "size", defaultValue = "10") int size){
+	public ResponseEntity<List<CI>> getMemberCs(
+			@RequestParam(name = "member_id", required = false) String member_id){
 		
-		Page<CI> productPage = csService.searchCIByMemberId(member_id, page - 1, size);
-			
-			if(productPage != null) {
+		if(member_id != null) {
+			return new ResponseEntity<>(csService.searchCIByMemberId(member_id), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
 				
-				List<CI> productList = productPage.getContent();
-				int totalPage = productPage.getTotalPages();    		
-
-				Map<String, Object> responseMap = new HashMap<>();
-				responseMap.put("productList", productList);
-				responseMap.put("totalPage", totalPage);
-				responseMap.put("currentPage", page);
-			
-				return new ResponseEntity<>(responseMap, HttpStatus.OK);
-			} else {
-				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-			}
-			
 	}
-		
+	
 
 	@GetMapping("/select/{cs_number}")
 	public ResponseEntity<?> detail(@PathVariable("cs_number") Integer cs_number) {

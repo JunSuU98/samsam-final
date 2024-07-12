@@ -5,8 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import GoBackButton from "../component/button/GoBackButton";
 import ToMainPageButton from "../component/button/ToMainPageButton";
+import MemberHeader from "./MemberHeader";
 
-function IdSearchPage() {
+function IdSearchPage({handleStorageChange, memberId}) {
 
     const [formData, setFormData] = useState({
         member_name: '',
@@ -47,6 +48,10 @@ function IdSearchPage() {
     return (
 
         <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
+
             {userId === null ? (
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="nameInput">

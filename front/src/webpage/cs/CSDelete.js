@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import MemberHeader from '../../member/page/MemberHeader';
 
-const CSSelectDetail = () => {
+const CSSelectDetail = ({handleStorageChange, memberId}) => {
     const { csNumber } = useParams();
     const navigate = useNavigate();
     const [csDetail, setCsDetail] = useState({});
@@ -38,6 +39,9 @@ const CSSelectDetail = () => {
 
     return (
         <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
             <h1>samsamzo 고객 문의</h1>
 			<h2>문의 삭제</h2>
             <div>

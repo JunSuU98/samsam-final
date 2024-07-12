@@ -1,5 +1,7 @@
 package com.samsam.begin.hong.service;
 
+import java.util.List;
+
 //import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -57,5 +59,11 @@ public class CSService {
     	Pageable pageable = PageRequest.of(page, size);
 
     	return csRepository.findByMemberId(member_id, pageable);
+    }
+    
+    // 회원 아이디로 문의 전체 조회 (list)
+    public List<CI> searchCIByMemberId(String member_id) {
+
+    	return csRepository.searchByMemberId(member_id);
     }
 }

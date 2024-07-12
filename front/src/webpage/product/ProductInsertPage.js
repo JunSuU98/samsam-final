@@ -150,7 +150,7 @@ function ProductInsertPage({handleStorageChange, memberId}) {
                 <Form.Select aria-label="Default select example" onChange={handleChange} name="product_category">
                         <option>카테고리 선택</option>
                         <option value="전자기기">전자기기</option>
-                        <option value="서적">서적</option>
+                        <option value="도서">도서</option>
                         <option value="의류">의류</option>
                         <option value="취미용품">취미용품</option>
                         <option value="생활용품">생활용품</option>

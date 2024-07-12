@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,6 +24,7 @@ public class WishlistService {
         Wishlist wishlist = new Wishlist();
         wishlist.setMemberId(member_id);
         wishlist.setProductNumber(product_number);
+        wishlist.setWishlistCreate(LocalDate.now().toString());
         return wishlistRepository.save(wishlist);
     }
 

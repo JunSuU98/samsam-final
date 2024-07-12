@@ -1,10 +1,13 @@
 import EditInfo from "../../info/EditInfo";
+import MemberHeader from "../../member/page/MemberHeader";
 
-function InfoUpdate(){
+function InfoUpdate({handleStorageChange, memberId}){
 
     return (
         <div>
-            {/* <p>edit info</p> */}
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
             <EditInfo />
         </div>
     )

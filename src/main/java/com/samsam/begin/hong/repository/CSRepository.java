@@ -1,6 +1,8 @@
 package com.samsam.begin.hong.repository;
 
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,4 +19,6 @@ public interface CSRepository extends JpaRepository<CI, Integer> {
     
     
     Page<CI> findByMemberId(String memberId, Pageable pageable);
+    
+    List<CI> searchByMemberId(String member_id);
 }

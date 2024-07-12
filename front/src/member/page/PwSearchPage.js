@@ -6,8 +6,9 @@ import Form from 'react-bootstrap/Form';
 
 import GoBackButton from "../component/button/GoBackButton";
 import { useNavigate } from "react-router-dom";
+import MemberHeader from "./MemberHeader";
 
-function PwSearchPage() {
+function PwSearchPage({handleStorageChange, memberId}) {
     // form 진행 단계 상태
     const [step, setStep] = useState(1);
 
@@ -80,6 +81,11 @@ function PwSearchPage() {
 
     return (
 
+        <div>
+
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
             <Form onSubmit={handleSubmit}>
                 {step === 1 && (
                     <>
@@ -126,6 +132,7 @@ function PwSearchPage() {
                 <GoBackButton text={"취소"} />
             </Form>
 
+        </div>
     );
 
 }

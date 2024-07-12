@@ -5,8 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../src/App.css';
 
 import ToMainPageButton from '../../member/component/button/ToMainPageButton';
+import MemberHeader from '../../member/page/MemberHeader';
 
-const CSSelect = () => {
+const CSSelect = ({handleStorageChange, memberId}) => {
     const [inquiries, setInquiries] = useState([]);
     const [searchContent, setSearchContent] = useState('title');
     const [searchKeyword, setSearchKeyword] = useState('');
@@ -14,6 +15,11 @@ const CSSelect = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [searchParams, setSearchParams] = useState({ searchContent: '', searchKeyword: '' });
     const [searched, setSearched] = useState(false);
+
+    const [refreshKey, setRefreshKey] = useState(0); // Define refreshKey here
+    const [isClicked, setIsClicked] = useState(false); // 클릭할 때 색상 변경
+
+
 
     const handleSearchContentChange = (e) => {
         setSearchContent(e.target.value);
@@ -32,10 +38,14 @@ const CSSelect = () => {
         setPage(1);
         setSearchParams({ searchContent, searchKeyword });
         setSearched(true);
+
+        setRefreshKey(refreshKey + 1); // Update refreshKey to force refresh
     };
 
     const handlePageChange = (newPage) => {
         setPage(newPage);
+
+        setRefreshKey(refreshKey + 1); // Update refreshKey to force refresh
     };
 
     const handleReset = () => {
@@ -44,6 +54,20 @@ const CSSelect = () => {
         setSearchParams({ searchContent: '', searchKeyword: '' });
         setPage(1);
         setSearched(false);
+
+
+        setRefreshKey(refreshKey + 1); // Update refreshKey to force refresh
+    };
+
+    // 마우스 눌렀을 때
+    const handleMouseDown = () => {
+        setIsClicked(true);
+    };
+
+    // 마우스 뗄 때
+    const handleMouseUp = () => {
+        setIsClicked(false);
+        handleReset();
     };
 
     const fetchInquiries = useCallback(async () => {
@@ -84,10 +108,13 @@ const CSSelect = () => {
         return pageNumbers;
     };
 
-    const memberId = sessionStorage.getItem("member_id");
+    // const memberId = sessionStorage.getItem("member_id");
 
     return (
         <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
             <div>
                 <h1>samsamzo 고객 문의</h1>
             </div>

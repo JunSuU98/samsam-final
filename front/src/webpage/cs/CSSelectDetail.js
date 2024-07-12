@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import MemberHeader from '../../member/page/MemberHeader';
 
-const CSSelectDetail = ({memberId}) => {
+const CSSelectDetail = ({handleStorageChange, memberId}) => {
     const { csNumber } = useParams();
     const [csDetail, setCsDetail] = useState({});
     const navigate = useNavigate()
@@ -40,6 +41,9 @@ const CSSelectDetail = ({memberId}) => {
 
     return (
         <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
             <h1>samsamzo 고객 문의</h1>
             <h2>문의 상세</h2>
             <div>

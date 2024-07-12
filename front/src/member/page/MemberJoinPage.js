@@ -4,10 +4,11 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import GoBackButton from "../component/button/GoBackButton";
+import MemberHeader from "./MemberHeader";
 
 import { useNavigate } from "react-router-dom";
 
-function MemberJoinPage(){
+function MemberJoinPage({handleStorageChange, memberId}){
     const navigate = useNavigate();
 
     // form 데이터 
@@ -96,6 +97,10 @@ function MemberJoinPage(){
     }
     
     return(
+        <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
 
         <Form onSubmit={handleSubmit}>
 
@@ -145,6 +150,7 @@ function MemberJoinPage(){
 
         </Form>
 
+        </div>
     )
 }
 

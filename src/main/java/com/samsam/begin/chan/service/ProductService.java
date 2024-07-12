@@ -2,6 +2,9 @@ package com.samsam.begin.chan.service;
 
 import com.samsam.begin.chan.entity.Product;
 import com.samsam.begin.chan.repository.ProductRepository;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,12 +42,21 @@ public class ProductService {
     	return productRepository.findByMemberId(member_id, pageable);
     }
     
+    // 회원 아이디로 상품 전체 조회 (리스트)
+    public List<Product> searchProductByMemberId(String member_id) {
+
+    	return productRepository.findByMemberId(member_id);
+    }
+    
     
     public Page<Product> searchProductsByName(String name, Pageable pageable) {
         return productRepository.findByProductTitleContaining(name, pageable);
     }
 
-    public Page<Product> searchProductsByCategory(String category, Pageable pageable) {
+    // 카테고리로 상품 전체 조회 페이징 
+    public Page<Product> searchProductsByCategory(String category, int page, int size) {
+    	Pageable pageable = PageRequest.of(page, size);
+
         return productRepository.findByProductCategory(category, pageable);
     }
 

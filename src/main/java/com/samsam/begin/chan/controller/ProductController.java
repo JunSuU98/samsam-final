@@ -101,9 +101,28 @@ public class ProductController {
 
     // 상품 카테고리 검색 
     @GetMapping("/category")
-    public ResponseEntity<Page<Product>> searchProductsByCategory(@RequestParam("category") String category, Pageable pageable) {
-        Page<Product> products = productService.searchProductsByCategory(category, pageable);
-        return new ResponseEntity<>(products, HttpStatus.OK);
+    public ResponseEntity<Map<String, Object>> searchProductsByCategory(
+    		@RequestParam(name = "category", required = false) String category
+			, @RequestParam(name = "page", defaultValue = "1") int page
+			, @RequestParam(name = "size", defaultValue = "10") int size) {
+
+        Page<Product> productPage = productService.searchProductsByCategory(category, page - 1, size);
+        
+        if(productPage != null) {
+    		
+    		List<Product> productList = productPage.getContent();
+    		int totalPage = productPage.getTotalPages();    		
+
+    		Map<String, Object> responseMap = new HashMap<>();
+			responseMap.put("productList", productList);
+			responseMap.put("totalPage", totalPage);
+			responseMap.put("currentPage", page);
+		
+			return new ResponseEntity<>(responseMap, HttpStatus.OK);
+    	} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
+        
     }
 
     // 상품 삭제 
@@ -119,30 +138,18 @@ public class ProductController {
     }
     
     
-    // 회원 판매 상품 조회
-    @GetMapping("/member")
-    public ResponseEntity<Map<String, Object>> getMemberAllProduct(
-    		@RequestParam(name = "member_id", required = false) String member_id
-			, @RequestParam(name = "page", defaultValue = "1") int page
-			, @RequestParam(name = "size", defaultValue = "10") int size){
+    // 회원 판매 상품 조회 (리스트)
+     @GetMapping("/member")
+    public ResponseEntity<List<Product>> getMemberAllProduct(
+    		@RequestParam(name = "member_id", required = false) String member_id) {
     	
-    	Page<Product> productPage = productService.searchProductByMemberId(member_id, page - 1, size);
-    	
-    	if(productPage != null) {
-    		
-    		List<Product> productList = productPage.getContent();
-    		int totalPage = productPage.getTotalPages();    		
-
-    		Map<String, Object> responseMap = new HashMap<>();
-			responseMap.put("productList", productList);
-			responseMap.put("totalPage", totalPage);
-			responseMap.put("currentPage", page);
-		
-			return new ResponseEntity<>(responseMap, HttpStatus.OK);
+    	if (member_id != null) {
+			return new ResponseEntity<>(productService.searchProductByMemberId(member_id), HttpStatus.OK);
     	} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	}
     	
     }
+   
     
 }

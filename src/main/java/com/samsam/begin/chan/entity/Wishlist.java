@@ -22,5 +22,8 @@ public class Wishlist {
     
     @Column(name = "product_number")
     private Integer productNumber; 
+    
+    @Column(name = "wishlist_create")
+    private String wishlistCreate;
 }
 

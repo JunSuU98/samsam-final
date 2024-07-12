@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import MemberHeader from '../../member/page/MemberHeader';
 
-const CSUpdate = () => {
+const CSUpdate = ({handleStorageChange, memberId}) => {
     const { csNumber } = useParams();
     const navigate = useNavigate();
     const [csTitle, setCsTitle] = useState('');
@@ -69,6 +70,9 @@ const CSUpdate = () => {
 
     return (
         <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
+
             <h1>samsamzo 고객 문의</h1>
             <h2>문의 수정</h2>
             <form onSubmit={handleFormSubmit}>

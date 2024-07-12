@@ -5,8 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useParams, useNavigate } from "react-router-dom";
 import GoBackButton from "../component/button/GoBackButton";
+import MemberHeader from "./MemberHeader";
 
-function MemberUpdatePage(){
+function MemberUpdatePage({handleStorageChange, memberId}){
 
     const {member_id} = useParams();
     const navigate = useNavigate();
@@ -96,6 +97,9 @@ function MemberUpdatePage(){
 
     
     return(
+        <div>
+            {/* 헤더 부분 */}
+            <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
 
         <Form onSubmit={handleSubmit}>
 
@@ -153,6 +157,7 @@ function MemberUpdatePage(){
 
         </Form>
 
+        </div>
     )
 
 }
