@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import MemberHeader from '../../member/page/MemberHeader';
 
+import '../../App.css';
+
 const CSSelectDetail = ({handleStorageChange, memberId}) => {
     const { csNumber } = useParams();
     const navigate = useNavigate();
@@ -25,7 +27,7 @@ const CSSelectDetail = ({handleStorageChange, memberId}) => {
         try {
             await axios.delete(`/api/cs/delete/${csNumber}`);
             alert('해당 문의를 삭제했습니다.');
-            navigate('/'); // 삭제 성공 시 목록 페이지로 이동
+            navigate('/cs'); // 삭제 성공 시 목록 페이지로 이동
         } catch (error) {
             console.error('Error deleting inquiry:', error);
             alert('문의 삭제에 실패했습니다. 다시 시도해주세요.');
@@ -34,7 +36,7 @@ const CSSelectDetail = ({handleStorageChange, memberId}) => {
 
     const handleCancel = () => {
         // Navigate back to inquiry detail page
-        navigate(`/CSSelectDetail/${csNumber}`);
+        navigate(`/cs/${csNumber}`);
     };
 
     return (
@@ -42,19 +44,30 @@ const CSSelectDetail = ({handleStorageChange, memberId}) => {
             {/* 헤더 부분 */}
             <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
 
-            <h1>samsamzo 고객 문의</h1>
-			<h2>문의 삭제</h2>
-            <div>
-                <p><strong>문의 제목:</strong> {csDetail.csTitle}</p>
-                <p><strong>문의 내용:</strong> {csDetail.csContent}</p>
+            <div className='detail-line' style={{ display: 'flex', alignItems: 'center' }}>
+                <h2 className='register-detail-text'>문의 삭제</h2>
+                <div className='cs-delete-btn'>
+                    <button type="button" onClick={handleCancel} className='cs-delete-canclebtn'>취소</button>
+                    <button type="button" onClick={handleDelete} className='btn cs-delete'>삭제</button>
+                    <button type="button" onClick={handleDelete} className=' cs-delete'>삭제</button>
+                </div>
+            </div>
+            <div className='cs-detail' style={{ display: 'flex', alignItems: 'center' }}>
+                <p className='cs-detail-title' style={{ display: 'flex', alignItems: 'center' }}><strong>문의 제목</strong>
+                <div className='cs-detail-title-text'>
+                    {csDetail.csTitle}
+                </div>
+                </p>
             </div>
             <div>
-                <button type="button" onClick={handleDelete}>문의 삭제</button>
-                <button type="button" onClick={handleCancel} className="button">취소</button>
+                <p className='cs-detail-content'><strong>문의 내용</strong>
+                    <div className='cs-detail-content-text'>{csDetail.csContent}</div></p>
             </div>
-			<div>
-				<Link to="/" className="button">문의 목록</Link>
-			</div>
+            <div className='cs-detail-to'>
+                <Link to="/cs" className='btn cs-detail-toselect'>전체 목록</Link>
+            </div>
+
+
         </div>
     );
 };

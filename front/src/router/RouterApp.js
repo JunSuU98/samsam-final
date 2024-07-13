@@ -23,8 +23,7 @@ import CSSelect from "../webpage/cs/CSSelect";
 import CSSelectDetail from "../webpage/cs/CSSelectDetail";
 import CSInsert from "../webpage/cs/CSInsert";
 import CSUpdate from "../webpage/cs/CSUpdate";
-
-import CSTestSelect from "../component/CsSelect";
+import CSDelete from "../webpage/cs/CSDelete";
 
 // Info Page Import
 import InfoInsert from "../webpage/info/InfoInsert";
@@ -148,6 +147,12 @@ function RouterApp() {
             path: "/cs/update/:csNumber",
             element: <CSUpdate handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
+        {
+            path: "/cs/delete/:csNumber",
+            element: <CSDelete handleStorageChange={handleStorageChange} memberId={memberId}/>
+        },
+
+
         //채팅 라우팅 테스터
 		{
 			path: "/chat-start",

@@ -37,6 +37,9 @@
   }
 }
 
+/* ====================  CSSelect ===================== */
+
+
 /* 홈 버튼 스타일 */
 .main-title.h1 {
    margin: 20px 0px 20px;
@@ -109,6 +112,8 @@
     border-color: #ced4da;
     color: #3b3b3b;
     font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* 문의 등록 버튼 호버*/
@@ -191,7 +196,11 @@
 .pagination-controls {
    display: flex;
    justify-content: center;
-   margin-top: 20px;
+   position: absolute;
+   bottom: 100px;
+   left: 50%;
+   transform: translateX(-50%);
+   justify-content: center;
 }
 
 /* 문의 목록 버튼 */
@@ -201,6 +210,338 @@
     color: #3b3b3b;
     font-weight: bold;
 }
+
+
+/********** CSSelectDetail.js **********/
+
+
+/* 상세 내용 타이틀 */
+.register-detail-text {
+   margin-left: 100px;
+   margin-top: 60px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    display: block;
+}
+
+
+/* 문의 제목, 일자 위치 */
+.cs-detail {
+   font-size: 20px;
+   margin-top: 30px;
+   margin-left: 100px;
+   margin-right: 100px;
+}
+
+/* 문의 제목 세부 위치 */
+.cs-detail-title {
+   margin-right: 50px;
+   
+}
+
+/* 문의 제목 텍스트 */
+.cs-detail-title-text {
+   margin-left: 20px;
+   font-size: 18px;
+   border-bottom: 1px solid #ced4da;
+   min-width: 50px;
+   padding: 10px 50px;
+}
+
+/* 문의 일자 세부 위치 */
+.cs-detail-date {
+   margin-left: 50px;
+}
+
+/* 문의 일자 텍스트 */
+.cs-detail-date-text {
+   margin-left: 20px;
+   font-size: 18px;
+   border-bottom: 1px solid #ced4da;
+   min-width: 50px;
+   padding: 10px 50px;
+}
+
+/* 문의 내용 */
+.cs-detail-content {
+   margin: 30px 100px;
+   font-size: 20px;
+}
+
+/* 문의 내용 텍스트 */
+.cs-detail-content-text {
+   margin-top: 10px;
+   padding: 20px 20px;
+   font-size: 18px;
+   border: 1px solid #ced4da;
+   border-radius: 10px;
+   min-height: 200px;
+}
+
+/* 수정, 삭제 버튼 위치 */
+.cs-detail-btn {
+   margin-left: auto;
+   margin-right: 100px;
+}
+
+/* 수정 버튼 스타일 */
+.cs-detail-toupdate {
+   color: #0080ff;
+   border-color: #0080ff;
+   margin-right: 10px;
+   font-weight: bold;
+   font-size: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 수정 버튼 호버 */
+.cs-detail-toupdate:hover {
+    color: white; /* 원하는 호버 색상으로 변경 */
+    background-color: #0080ff; /* 원하는 호버 색상으로 변경 */
+}
+
+/* 삭제 버튼 스타일 */
+.cs-detail-todelete {
+   color: red;
+   border-color: red;
+   font-weight: bold;
+   font-size: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 삭제 버튼 호버 */
+.cs-detail-todelete:hover {
+    color: white; /* 원하는 호버 색상으로 변경 */
+    background-color: red; /* 원하는 호버 색상으로 변경 */
+}
+
+/* 전체 목록 버튼 위치 */
+.cs-detail-to {
+   position: absolute;
+    right: 100px;
+}
+
+/* 전체 목록 버튼 스타일 */
+.cs-detail-toselect {
+   background-color: #ced4da;
+    border-color: #ced4da;
+    color: #3b3b3b;
+    font-weight: bold;
+    min-width: 200px;
+    min-height: 50px;
+    align-content: center;
+    font-size: 20px;
+}
+
+/* 전체 목록 버튼 호버 */
+.cs-detail-toselect:hover {
+   background-color: #5C636A;
+    border-color: #5C636A;
+    color: white;
+}
+
+/***************************************/
+
+
+/********** CSSelectUpdate.js **********/
+
+/* 전체 위치 */
+.cs-update-all {
+   margin-top: 60px;
+}
+
+/* 문의 제목 타이틀 */
+.cs-update-title {
+   margin-left: 100px;
+   margin-top: 30px;
+   align-content: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+/* 문의 제목 input 박스*/
+.cs-update-title-text {
+   margin-left: 30px;
+   align-content: center;
+   font-size: 18px;
+   padding-top: 10px;
+   padding-left: 10px;
+}
+
+/* 문의 내용, input 박스 */
+.cs-update-content {
+   display: flex;
+   margin-left: auto;
+   position: relative;
+}
+
+/* 문의 내용 타이틀 */
+.cs-update-content-title {
+   margin-left: 100px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+/* 문의 내용 input 박스 */
+#csContent {
+   flex: 1;
+   margin-right: 100px;
+   margin-left: 30px;
+   font-size: 18px;
+   padding: 20px 20px;
+   min-height: 200px;
+   
+}
+
+/* 문의 수정 완료, 취소 버튼 */
+.cs-update-btn {
+   align-content: center;
+   margin-left: auto;
+   margin-right: 100px;
+}
+
+/* 취소 버튼 */
+.cs-update-canclebtn {
+   margin-right: 10px;
+   border-radius: 5px;
+   padding: 5px 10px;
+   color: #5C636A;
+   background-color: rgba(255, 255, 255, 0);
+   border-color: #5C636A;
+   margin-right: 10px;
+   font-weight: bold;
+   font-size: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 취소 버튼 호버 */
+.cs-update-canclebtn:hover {
+   background-color: #5C636A;
+    border-color: #5C636A;
+    color: white;
+}
+
+/* 수정 완료 버튼 */
+.cs-update-submitbtn {
+   border-radius: 5px;
+   padding: 5px 10px;
+   color: white;
+   background-color: #0080ff;
+   border-color: #0080ff;
+   font-weight: bold;
+   font-size: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 수정 완료 버튼 호버 */
+.cs-update-submitbtn:hover {
+   color: white; /* 원하는 호버 색상으로 변경 */
+    background-color: #006bd7; /* 원하는 호버 색상으로 변경 */
+}
+
+/* 전체 목록 버튼 위치 */
+.cs-update-to {
+   margin-top: 20px;
+   margin-left: auto;
+   display: flex;
+   align-items: center;
+}
+
+/* 전체 목록 버튼 스타일 */
+.cs-update-toselect {
+   margin-left: auto;
+   margin-right: 100px;
+   background-color: #ced4da;
+    border-color: #ced4da;
+    color: #3b3b3b;
+    font-weight: bold;
+    min-width: 200px;
+    min-height: 50px;
+    align-content: center;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+/* 전체 목록 버튼 호버 */
+.cs-update-toselect:hover {
+   background-color: #5C636A;
+    border-color: #5C636A;
+    color: white;
+}
+
+
+/***************************************/
+
+
+/********** CSDelete.js **********/
+
+/* 취소, 삭제 버튼 */
+.cs-delete-btn {
+   margin-left: auto;
+   margin-right: 100px;
+   display: flex;
+   justify-content: center;
+   margin-top: 40px;
+}
+
+/* 취소 버튼 */
+.cs-delete-canclebtn {
+   margin-right: 10px;
+   border-radius: 5px;
+   padding: 5px 10px;
+   color: #5C636A;
+   background-color: rgba(255, 255, 255, 0);
+   border-color: #5C636A;
+   margin-right: 10px;
+   font-weight: bold;
+   font-size: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 취소 버튼 호버 */
+.cs-delete-canclebtn:hover {
+   background-color: #5C636A;
+    border-color: #5C636A;
+    color: white;
+}
+
+/* 삭제 버튼 */
+.cs-delete {
+   color: white;
+   border-color: red;
+   background-color: red;
+   font-weight: bold;
+   font-size: 20px;
+   padding-left: 20px;
+   padding-right: 20px;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 삭제 버튼 호버 */
+.cs-delete:hover {
+    background-color: #d90000;
+    color: white;
+}
+
+/***************************************/
+
+
+
 
 
 /********** member>modal>LoginModal.js **********/
@@ -345,3 +686,66 @@ margin: 0 30px;
 
 
 /************************************************/
+
+
+/*************member>page>MemberHeader.js********/
+
+.navbar-container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 20px;
+   background-color: #f8f9fa;
+}
+
+.navbar-brand {
+   display: flex;
+   align-items: center;
+}
+
+.logo-container {
+   display: flex;
+   align-items: center;
+}
+
+.logo {
+   width: 80px;
+   height: 80px;
+}
+
+/* 관리자 페이지 링크 버튼*/
+.memberheader-admin-link {
+   margin: 20px;
+   padding: 5px 15px;
+   border-radius: 30px;
+   text-decoration: none;
+   background-color: #21E6C1;
+   color: white;
+   font-weight: bold;
+}
+
+/* 로그인(내 정보 보기), 로그아웃 버튼 위치 */
+.auth-buttons-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+}
+
+/* 로그인(내 정보 보기), 로그아웃 버튼 스타일 */
+.auth-buttons {
+   display: flex;
+   align-items: center;
+   margin-left: auto;
+   margin-right: 15px;
+   gap: 10px;
+}
+
+/* 판매하기 버튼 */
+.sell-button-container { 
+   margin-top: 10px;
+   margin-right: 15px;
+   margin-left: auto;
+}
+/************************************************/
+

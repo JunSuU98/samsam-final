@@ -3,6 +3,9 @@ import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import MemberHeader from '../../member/page/MemberHeader';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../App.css'
+
 const CSUpdate = ({handleStorageChange, memberId}) => {
     const { csNumber } = useParams();
     const navigate = useNavigate();
@@ -64,8 +67,7 @@ const CSUpdate = ({handleStorageChange, memberId}) => {
     };
 
     const handleCancel = () => {
-        setCsTitle('');
-        setCsContent('');
+        navigate(`/cs/${csNumber}`);
     };
 
     return (
@@ -73,45 +75,46 @@ const CSUpdate = ({handleStorageChange, memberId}) => {
             {/* 헤더 부분 */}
             <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
 
-            <h1>samsamzo 고객 문의</h1>
-            <h2>문의 수정</h2>
+            <h2 className='register-detail-text'>문의 수정</h2>
             <form onSubmit={handleFormSubmit}>
                 <fieldset>
-                    <div>
-                        <label htmlFor="csTitle">문의 제목</label>
+                        <div className='cs-update-all' style={{ display: 'flex', alignItems: 'center' }}>
+                            <label className='cs-update-title' htmlFor="csTitle">문의 제목</label>
+                            <input className='cs-update-title-text'
+                                type="text"
+                                id="csTitle"
+                                value={csTitle}
+                                onChange={(e) => setCsTitle(e.target.value)}
+                                required
+                            />
+                        <div className='cs-update-btn'>
+                            <button className='cs-update-canclebtn' type="button" onClick={handleCancel}>취소</button>
+                            <button className='cs-update-submitbtn' type="submit">수정 완료</button>
+                        </div>
+                        </div>
+                        <div className='cs-update-content'>
+                            <label className='cs-update-content-title' htmlFor="csContent">문의 내용</label>
+                            <textarea
+                                id="csContent"
+                                rows="5"
+                                value={csContent}
+                                onChange={(e) => setCsContent(e.target.value)}
+                                required
+                            ></textarea>
+                        </div>
                         <input
-                            type="text"
-                            id="csTitle"
-                            value={csTitle}
-                            onChange={(e) => setCsTitle(e.target.value)}
-                            required
+                            type="hidden"
+                            id="csDate"
+                            value={csDate}
+                            readOnly
                         />
-                    </div>
-                    <div>
-                        <label htmlFor="csContent">문의 내용</label>
-                        <textarea
-                            id="csContent"
-                            rows="5"
-                            value={csContent}
-                            onChange={(e) => setCsContent(e.target.value)}
-                            required
-                        ></textarea>
-                    </div>
-                    <input
-                        type="hidden"
-                        id="csDate"
-                        value={csDate}
-                        readOnly
-                    />
-                    <div>
-                        <button type="submit">문의 수정</button>
-                        <button type="button" onClick={handleCancel}>취소</button>
-                    </div>
-                </fieldset>
-            </form>
-            <div>
-                <Link to="/cs">문의 목록</Link>
-            </div>
+                    </fieldset>
+                    
+                </form>
+
+                <div className='cs-update-to'>
+                    <Link to="/" className='btn cs-update-toselect'>전체 목록</Link>
+                </div>
         </div>
     );
 };

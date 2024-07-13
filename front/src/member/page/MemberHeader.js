@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import '../../App.css';
 
 import LogoutButton from "../component/button/LogoutButton";
 import ToJoinPageButton from "../component/button/ToJoinPageButton";
@@ -33,55 +34,36 @@ function MemberHeader({handleStorageChange, memberId}){
                         />
                     </Col>
                     <Col>
-                        <h1 className="mb-0 ms-2">SAMSAM</h1>
+                        <h1 className="mb-0 ms-2" style={{ fontFamily: 'Jua' }}>SAMSAM</h1>
                     </Col>
+                    {memberId === "admin" && <Link to={"/admin"} className="memberheader-admin-link">관리자 페이지</Link>}
                     </Navbar.Brand>
         
 
                 <div className="d-flex align-items-center">
-                    <SellProductButton memberId={memberId} handleStorageChange={handleStorageChange}/>
 
-                    {/* 로그인 관련 컴포넌트 */}
-                    <div style={{display: 'inline'}}>
-                        {memberId === null ? (
-                            <>
-                                <LoginButton handleStorageChange={handleStorageChange}/>
-                                <ToJoinPageButton />
-                            </>
-                                ) : (
-                            <>
-                            <LogoutButton handleStorageChange={handleStorageChange} />
-                            <MyPageButton member_id={memberId} />
-                            </>
-                        )}
+					<div className="auth-buttons-container" style={{ display: 'flex', alignItems: 'center' }}>
+						{memberId === null ? (
+							<div className="auth-buttons">
+								<LoginButton handleStorageChange={handleStorageChange} />
+								<ToJoinPageButton />
+							</div>
+						) : (
+							<div className="auth-buttons">
+								<LogoutButton handleStorageChange={handleStorageChange} />
+								<MyPageButton member_id={memberId} />
+							</div>
+						)}
+						<div className="sell-button-container">
+							<SellProductButton memberId={memberId} handleStorageChange={handleStorageChange} />
+						</div>
+					</div>
 
-                        {memberId === "admin" && <Link to={"/admin"}>admin page</Link>}
-                    </div>
 
                 </div>
 
             </Container>
         </Navbar>
-
-
-            {/* <SellProductButton memberId={memberId} handleStorageChange={handleStorageChange}/> */}
-
-            {/* 로그인 관련 컴포넌트 */}
-            {/* <div style={{display: 'inline'}}>
-                {memberId === null ? (
-                    <>
-                        <LoginButton handleStorageChange={handleStorageChange}/>
-                        <ToJoinPageButton />
-                    </>
-                        ) : (
-                    <>
-                    <LogoutButton handleStorageChange={handleStorageChange} />
-                    <MyPageButton member_id={memberId} />
-                    </>
-                )}
- */}
-                {/* {memberId === "admin" && <Link to={"/admin"}>admin page</Link>} */}
-            {/* </div> */}
 
         </div>
 

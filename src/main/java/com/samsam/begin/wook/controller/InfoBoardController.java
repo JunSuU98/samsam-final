@@ -1,5 +1,6 @@
 package com.samsam.begin.wook.controller;
 
+import java.io.IOException;
 import java.lang.ProcessHandle.Info;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.samsam.begin.ji.service.ImgService;
 import com.samsam.begin.wook.dto.InfoDTO;
 import com.samsam.begin.wook.entity.INFO;
 import com.samsam.begin.wook.service.InfoBoardService;
@@ -32,6 +34,10 @@ public class InfoBoardController {
 
     @Autowired
     private InfoBoardService infoBoardService;
+    
+    @Autowired
+    private ImgService imgService;
+
 
     @GetMapping("/api/list")
     public ResponseEntity<Map<String, Object>> list(
@@ -89,7 +95,9 @@ public class InfoBoardController {
     }
 
     @DeleteMapping("/api/delete/{infoNumber}")
-    public void delete(@PathVariable("infoNumber") Integer infoNumber) {
+    public void delete(@PathVariable("infoNumber") Integer infoNumber) throws IOException {
+    	imgService.deleteImgs(null, infoNumber);
+
         infoBoardService.delete(infoNumber);
     }
     

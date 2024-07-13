@@ -9,7 +9,7 @@ function ToJoinPageButton(){
 
     return(
 
-        <Link to={"/join"}>
+        <Link to={"/join"} >
             <Button variant="outline-primary">회원가입</Button>{' '}
         </Link>
 

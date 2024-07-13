@@ -71,6 +71,7 @@ function LoginModal({ show, setShow, handleStorageChange }) {
          navigate(-1);
 
       } catch (error) {
+         alert("로그인에 실패했습니다")
          console.log("login error: ", error);
       }
 
