@@ -74,13 +74,62 @@ function MemberJoinPage({handleStorageChange, memberId}){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // ======== 유효성 검사 
+        if(!formData.member_id.trim() || formData.member_id.length > 50){
+            alert("아이디는 비어있거나 50자를 초과할 수 없습니다");
+            return;
+        }
+
         if(idCheckResult === 0){
             alert('아이디 중복 확인을 해주세요');
+            return;
+        }
+        
+        if(!formData.member_password.trim()){
+                alert("비밀번호를 입력해주세요");
             return;
         }
 
         if(formData.member_password !== formData.confirm_password){
             alert("비밀번호가 일치하지 않습니다.");
+            return;
+        }
+        
+        if(!formData.member_name.trim()){
+            alert("이름을 입력해주세요");
+            return;
+        }
+        
+        if(!formData.member_email.trim()){
+            alert("이메일을 입력해주세요");
+            return;
+        }
+
+        const pattern = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+
+        
+        if(!pattern.test(formData.member_phone)){
+            alert("전화번호를 입력해주세요");
+            return;
+        }
+        
+        if(!formData.member_address.trim()){
+            alert("주소를  입력해주세요");
+            return;
+        }
+
+        const joinBirth = new Date(formData.member_birth);
+        const joinBirthYear = joinBirth.getFullYear();
+        const currentYear = new Date().getFullYear();
+        const age = currentYear - joinBirthYear;
+
+        if(!formData.member_birth.trim()){
+            alert("생년월일을 입력해주세요");
+            return;
+        }
+
+        if(age < 8 || age > 90){
+            alert("유효하지 않은 출생년도입니다.");
             return;
         }
 

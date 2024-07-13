@@ -54,12 +54,13 @@ function MemberHeader({handleStorageChange, memberId}){
 								<MyPageButton member_id={memberId} />
 							</div>
 						)}
-						<div className="sell-button-container">
-							<SellProductButton memberId={memberId} handleStorageChange={handleStorageChange} />
-						</div>
+                        {memberId !== "admin" &&
+                            <div className="sell-button-container">
+                                <SellProductButton memberId={memberId} handleStorageChange={handleStorageChange} />
+                            </div>
+                        }
 					</div>
-
-
+                
                 </div>
 
             </Container>
