@@ -46,12 +46,12 @@ function PsearchFormTest({handleProductList, handleTotalPage, handleCurrentPage,
 
     return (
 
-        <div style={{ display: 'block', justifyContent: 'center'}}>
+        <div className="psearchform-search">
             <Form onSubmit={handleSubmit} >
                 
-                <InputGroup className="mb-3" style={{ maxWidth: '80%' }}>
+                <InputGroup className="mb-3 psearchform-search-input">
 
-                    <Form.Select aria-label="Default select example" onChange={handleChange} name="searchFilter" style={{ maxWidth: "16%"}}>
+                    <Form.Select aria-label="Default select example" onChange={handleChange} name="searchFilter" className="psearchform-option">
                         <option>검색옵션</option>
                         <option value="product_title">제목</option>
                         <option value="product_content">내용</option>
@@ -59,12 +59,14 @@ function PsearchFormTest({handleProductList, handleTotalPage, handleCurrentPage,
 
 
                     <Form.Control
+                    className="psearchform-input form-control"
                     placeholder="검색어를 입력하세요"
                     aria-label="searchInput"
                     aria-describedby="basic-addon2"
                     name="searchQuery"  
                     value={searchData.searchQuery}
                     onChange={handleChange}
+                    style={{ flex: '1' }}
                     />
                     <Button variant="outline-secondary" id="button-addon2" type="submit"> 검색 </Button>
                 </InputGroup>

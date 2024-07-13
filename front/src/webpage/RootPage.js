@@ -14,6 +14,9 @@ import ProductTable from "../product/component/ProductTable";
 
 import ChatListButton from "../chat/component/ChatListButton";
 
+import '../App.css';
+
+
 function Root({handleStorageChange, memberId}){
 
     // 검색과 페이징에 필요한 데이터 변수
@@ -90,7 +93,7 @@ function Root({handleStorageChange, memberId}){
                 defaultActiveKey="전체"
                 transition={false}
                 id="noanim-tab-example"
-                className="mb-3"
+                className="mb-3 category"
                 onSelect={categorySearch}
             >
                 <Tab eventKey="전체" title="전체">

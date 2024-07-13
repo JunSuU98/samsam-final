@@ -749,3 +749,111 @@ margin: 0 30px;
 }
 /************************************************/
 
+/**********product>component>PproductSearchForm.js**************/
+
+/* 검색창 위치 */
+.psearchform-search {
+   display: flex;
+   justify-content: center;
+   background-color: #F8F9FA;
+}
+
+.psearchform-search-input {
+   flex: 1;
+   max-width: 600px;
+}
+
+.psearchform-option {
+   max-width: 30%;
+   height: 45px;
+}
+
+.input-group .psearchform-input.form-control {
+   font-size: 16px;
+   min-width: 300px;
+   border: 1px solid #6C757D;
+
+}
+
+.input-group .psearchform-option {
+	background-color: rgba(255, 255, 255, 0);
+	border: 1px solid #6C757D;
+	color: black;
+	font-weight: bold;
+}
+
+.input-group .psearchform-option::after {
+	color: white;
+}
+
+.input-group #button-addon2 {
+	font-weight: bold;
+	color: black;
+}
+
+/******************************************************/
+
+/*******************webpage>product>RootPage.js*******************************/
+
+/* 카테고리 위치 */
+.category {
+   justify-content: center;
+   background-color: #f8f9fa;
+}
+
+/* 카테고리 탭들 스타일 */
+.category .nav-item {
+   border: none; /* 탭 아이템의 기본 테두리 제거 */
+}
+
+/* 카테고리 탭 버튼 스타일 */
+.category .nav-link {
+  margin-top: 15px;
+  margin-bottom: 20px;
+   color: #7b7b7b; /* 기본 글자 색상 */
+   font-weight: bold;
+   background-color: #f8f9fa;
+   padding: 10px 20px; /* 탭 내부 패딩 */
+   transition: background-color 0.3s, color 0.3s; /* 색상 변경 시 애니메이션 효과 */
+   border: none !important; /* 기본 테두리 제거 */
+   position: relative; /* 밑줄을 추가하기 위해 position 설정 */
+}
+
+/* 탭 버튼 밑줄 스타일 */
+.category .nav-link::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height: 2px;
+   background-color: transparent; /* 기본은 투명 */
+   transition: background-color 0.3s, color 0.3s; /* 애니메이션 효과 */
+}
+
+/* 마우스 오버 및 활성화된 탭의 밑줄 색상 */
+.category .nav-link:hover::after,
+.category .nav-link.active::after {
+   background-color: #21e6c1; /* 마우스 오버 및 활성화된 탭의 밑줄 색상 */
+}
+
+/* 활성화된 탭 버튼 스타일 */
+.category .nav-link.active {
+   color: black; /* 활성화된 탭의 글자 색상 */
+   font-weight: bold; /* 활성화된 탭의 글자 두껍게 */
+   background-color: #f8f9fa !important;
+   bottom: 3px;;
+   font-size: 18px; /* 활성화된 탭의 글자 크기 */
+}
+
+/* 마우스 오버 시 탭 버튼 스타일 */
+.category .nav-link:hover {
+   color: black; /* 마우스 오버 시 글자 색상 */
+   background: none; /* 배경색 없음 */
+}
+
+/* 탭 컨테이너의 기본 밑줄 제거 */
+.category.nav-tabs {
+  border-bottom: none;
+}
+/******************************************************/
