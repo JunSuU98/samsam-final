@@ -28,8 +28,8 @@ import CSDelete from "../webpage/cs/CSDelete";
 // Info Page Import
 import InfoInsert from "../webpage/info/InfoInsert";
 import InfoSelect from "../webpage/info/InfoSelect";
-import InfoDetail from "../info/InfoDetail";
 import InfoUpdate from "../webpage/info/InfoUpdate";
+import InfoSelectDetail from "../webpage/info/InfoSelectDetail";
 
 
 // Chat Import
@@ -119,7 +119,7 @@ function RouterApp() {
         },
         {
             path: "/info/:infoNumber",
-            element: <InfoDetail handleStorageChange={handleStorageChange} memberId={memberId}/>
+            element: <InfoSelectDetail handleStorageChange={handleStorageChange} memberId={memberId}/>
         },
         {
             path: "/info/insert",

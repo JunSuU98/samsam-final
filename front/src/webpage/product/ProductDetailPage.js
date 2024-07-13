@@ -127,6 +127,15 @@ function ProductDetailPage({handleStorageChange, memberId}){
                         </Row>
 
                         <Row>
+                                <Col>
+                                <h6 style={{ color: 'gray' }}>
+                                    {productData.productStatus}
+                                </h6>
+                            </Col>
+                        </Row>
+
+
+                        <Row>
                             <Col>
                                 <hr/>
                             </Col>

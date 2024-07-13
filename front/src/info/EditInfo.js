@@ -118,15 +118,22 @@ const EditInfo = () => {
 
             formData.append("infoNumber", infoNumber);
 
-            selectedFiles.forEach(file => {
-                formData.append("images", file, file.name);
-            });
+			// 이미지가 선택되지 않은 경우 단순하게 기존의 이미지를 삭제한다
+            if (selectedFiles.length === 0) {
+				await axios.delete(`/api/img/delete?info_number=${infoNumber}`);
 
-            await axios.post("/api/img/update", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            });
+            } else {
+                selectedFiles.forEach(file => {
+                    formData.append("images", file);
+                });
+
+				await axios.post("/api/img/update", formData, {
+					headers: {
+						"Content-Type": "multipart/form-data"
+					}
+				});
+
+            }
 
 			// =================
 

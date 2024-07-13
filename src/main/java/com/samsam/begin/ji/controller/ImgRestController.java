@@ -140,4 +140,14 @@ public class ImgRestController {
 
 	}
 	
+	
+	// 이미지 삭제
+	@DeleteMapping("/api/img/delete")
+	public ResponseEntity<String> deleteImg(@RequestParam(name = "product_number", required = false) Integer productNumber, @RequestParam(name = "info_number", required = false) Integer infoNumber) throws IOException{
+		
+		imgService.deleteImgs(productNumber, infoNumber);
+		
+		return new ResponseEntity<>("이미지 삭제 성공", HttpStatus.NO_CONTENT);
+	}
+	
 }

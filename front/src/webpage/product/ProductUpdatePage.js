@@ -12,6 +12,7 @@ import Container from 'react-bootstrap/Container';
 
 
 function ProductUpdatePage({handleStorageChange, memberId}) {
+    const DEFAULT_IMAGE_PATH = process.env.PUBLIC_URL + '/no_img.jpeg'; // public 폴더의 기본 이미지 경로
 
     const navigate = useNavigate();
     const {productNumber} = useParams();
@@ -113,6 +114,22 @@ function ProductUpdatePage({handleStorageChange, memberId}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // ====== 유효성 검사
+        if(!productFormData.product_title.trim()){
+            alert("상품 제목을 입력해주세요");
+            return
+        }
+
+        if(!productFormData.product_content.trim()){
+            alert("상품 설명을 입력해주세요");
+            return
+        }
+
+        if(!productFormData.product_category.trim()){
+            alert("카테고리를 선택해주세요");
+            return
+        }
         
         try {
 
@@ -128,9 +145,16 @@ function ProductUpdatePage({handleStorageChange, memberId}) {
 
             formData.append("productNumber", productNumber);
 
-            selectedFiles.forEach(file => {
-                formData.append("images", file, file.name);
-            });
+
+            // 이미지가 선택되지 않은 경우 public 폴더의 기본 이미지 추가
+            if (selectedFiles.length === 0) {
+                const defaultFile = new File([await fetch(DEFAULT_IMAGE_PATH).then(res => res.blob())], 'no_img.jpeg', { type: 'image/jpeg' });
+                formData.append("images", defaultFile);
+            } else {
+                selectedFiles.forEach(file => {
+                    formData.append("images", file);
+                });
+            }
 
             await axios.post("/api/img/update", formData, {
                 headers: {

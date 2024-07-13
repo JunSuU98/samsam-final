@@ -75,7 +75,7 @@ const InfoList = () => {
                             <tr key={info.infoNumber} className="text-center">
                                 <td>{info.infoNumber}</td>
                                 <td>
-                                     <Link to={`/info/${info.infoNumber}`} className="btn btn-link">
+                                    <Link to={`/info/${info.infoNumber}`} className="btn btn-link">
                                         {info.infoTitle}
                                     </Link>
                                 </td>

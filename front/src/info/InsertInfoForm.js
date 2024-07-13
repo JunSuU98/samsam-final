@@ -63,15 +63,18 @@ const InsertInfoForm = () => {
 
             formData.append("infoNumber", infoNumber);
 
-            selectedFiles.forEach(file => {
-                formData.append("images", file);
-            });
 
-            await axios.post("/api/img/insert", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            });
+            if (selectedFiles.length !== 0) {
+                selectedFiles.forEach(file => {
+                    formData.append("images", file);
+                });
+                
+                await axios.post("/api/img/insert", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
+            } 
             // ======================
 
             console.log('Inserted info:', response.data); // 성공적으로 입력된 데이터 확인 (optional)
