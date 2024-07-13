@@ -8,6 +8,10 @@ import GoBackButton from "../component/button/GoBackButton";
 import { useNavigate } from "react-router-dom";
 import MemberHeader from "./MemberHeader";
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 function PwSearchPage({handleStorageChange, memberId}) {
     // form 진행 단계 상태
     const [step, setStep] = useState(1);
@@ -86,52 +90,70 @@ function PwSearchPage({handleStorageChange, memberId}) {
             {/* 헤더 부분 */}
             <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
 
-            <Form onSubmit={handleSubmit}>
-                {step === 1 && (
-                    <>
-                        <Form.Group className="mb-3" controlId="idInput">
-                            <Form.Label>아이디</Form.Label>
-                            <Form.Control type="text" placeholder="아이디를 입력하세요" name="member_id" value={formData.member_id} onChange={handleChange} />
-                        </Form.Group>
+            <Container>
 
-                        <Form.Group className="mb-3" controlId="nameInput">
-                            <Form.Label>이름</Form.Label>
-                            <Form.Control type="text" placeholder="이름을 입력하세요" name="member_name" value={formData.member_name} onChange={handleChange} />
-                        </Form.Group>
+            <Row className="d-flex justify-content-center mt-5 mb-5">
+                    <Col xs={6}> 
+                        <h1
+                            style={{ fontWeight: 'bold', cursor: 'pointer' }}>
+                            비밀번호 찾기
+                        </h1>
+                    </Col>
+            </Row>
 
-                        <Form.Group className="mb-3" controlId="emailInput">
-                            <Form.Label>이메일</Form.Label>
-                            <Form.Control type="email" placeholder="이메일을 입력하세요" name="member_email" value={formData.member_email} onChange={handleChange} />
-                        </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="phoneInput">
-                            <Form.Label>전화번호</Form.Label>
-                            <Form.Control type="text" placeholder="(-) 을 포함한 13자리 입력" name="member_phone" value={formData.member_phone} onChange={handleChange} />
-                        </Form.Group>
+            <Row className="d-flex justify-content-center">
+                <Col xs={6}>
 
-                        <Button type="submit">비밀번호 찾기</Button>
-                    </>
-                )}
+                    <Form onSubmit={handleSubmit}>
+                        {step === 1 && (
+                            <>
+                                <Form.Group className="mb-3" controlId="idInput">
+                                    <Form.Label>아이디</Form.Label>
+                                    <Form.Control type="text" placeholder="아이디를 입력하세요" name="member_id" value={formData.member_id} onChange={handleChange} />
+                                </Form.Group>
 
-                {step === 2 && (
-                    <>
-                        <Form.Group className="mb-3" controlId="newPasswordInput">
-                            <Form.Label>새 비밀번호</Form.Label>
-                            <Form.Control type="password" placeholder="새 비밀번호를 입력하세요" name="member_password" value={formData.new_password} onChange={handleChange} />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="nameInput">
+                                    <Form.Label>이름</Form.Label>
+                                    <Form.Control type="text" placeholder="이름을 입력하세요" name="member_name" value={formData.member_name} onChange={handleChange} />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="confirmPasswordInput">
-                            <Form.Label>비밀번호 확인</Form.Label>
-                            <Form.Control type="password" placeholder="비밀번호를 다시 입력하세요" name="confirm_password" value={formData.confirm_password} onChange={handleChange} />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="emailInput">
+                                    <Form.Label>이메일</Form.Label>
+                                    <Form.Control type="email" placeholder="이메일을 입력하세요" name="member_email" value={formData.member_email} onChange={handleChange} />
+                                </Form.Group>
 
-                        <Button type="submit">비밀번호 재설정</Button>
-                    </>
-                )}
+                                <Form.Group className="mb-3" controlId="phoneInput">
+                                    <Form.Label>전화번호</Form.Label>
+                                    <Form.Control type="text" placeholder="(-) 을 포함한 13자리 입력" name="member_phone" value={formData.member_phone} onChange={handleChange} />
+                                </Form.Group>
 
-                <GoBackButton text={"취소"} />
-            </Form>
+                                <Button type="submit" className="me-5">비밀번호 찾기</Button>
+                            </>
+                        )}
 
+                        {step === 2 && (
+                            <>
+                                <Form.Group className="mb-3" controlId="newPasswordInput">
+                                    <Form.Label>새 비밀번호</Form.Label>
+                                    <Form.Control type="password" placeholder="새 비밀번호를 입력하세요" name="member_password" value={formData.new_password} onChange={handleChange} />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="confirmPasswordInput">
+                                    <Form.Label>비밀번호 확인</Form.Label>
+                                    <Form.Control type="password" placeholder="비밀번호를 다시 입력하세요" name="confirm_password" value={formData.confirm_password} onChange={handleChange} />
+                                </Form.Group>
+
+                                <Button type="submit" className="me-5">비밀번호 재설정</Button>
+                            </>
+                        )}
+
+                        <GoBackButton text={"취소"} />
+                    </Form>
+
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 
