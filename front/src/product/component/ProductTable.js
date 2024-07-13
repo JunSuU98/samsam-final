@@ -18,8 +18,8 @@ function ProductTable({ productList }) {
     const chunkedProductList = chunkArray(productList, 5);
 
     return (
-        <Table borderless>
-            <tbody>
+        <Table borderless className='producttable-table'>
+            <tbody className='producttable-tbody'>
                 {chunkedProductList.map((chunk, chunkIndex) => (
                     <tr key={chunkIndex}>
                         {chunk.map((product) => (

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MemberHeader from '../../member/page/MemberHeader';
+
+import '../../App.css';
 
 const CSInsert = ({handleStorageChange, memberId}) => {
     const [csTitle, setCsTitle] = useState('');
     const [csContent, setCsContent] = useState('');
     const [csDate, setCsDate] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const today = new Date().toISOString().substr(0, 10);
@@ -43,8 +46,7 @@ const CSInsert = ({handleStorageChange, memberId}) => {
     };
 
     const handleCancel = () => {
-        setCsTitle('');
-        setCsContent('');
+        navigate(`/`);
     };
 
     return (
@@ -52,22 +54,27 @@ const CSInsert = ({handleStorageChange, memberId}) => {
             {/* 헤더 부분 */}
             <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
 
-            <h1>samsamzo 고객 문의</h1>
-            <h2>문의 등록</h2>
+            <h2 className='register-detail-text'>문의 등록</h2>
             <form onSubmit={handleFormSubmit}>
-                <fieldset>
-                    <div>
-                        <label htmlFor="csTitle">문의 제목</label>
-                        <input
+
+
+            <fieldset>
+                    <div className='cs-update-all' style={{ display: 'flex', alignItems: 'center' }}>
+                        <label className='cs-update-title' htmlFor="csTitle">문의 제목</label>
+                        <input className='cs-update-title-text'
                             type="text"
                             id="csTitle"
                             value={csTitle}
                             onChange={(e) => setCsTitle(e.target.value)}
                             required
                         />
+                    <div className='cs-update-btn'>
+                        <button className='cs-update-canclebtn' type="button" onClick={handleCancel}>취소</button>
+                        <button className='cs-update-submitbtn' type="submit">등록</button>
                     </div>
-                    <div>
-                        <label htmlFor="csContent">문의 내용</label>
+                    </div>
+                    <div className='cs-update-content'>
+                        <label className='cs-update-content-title' htmlFor="csContent">문의 내용</label>
                         <textarea
                             id="csContent"
                             rows="5"
@@ -82,14 +89,12 @@ const CSInsert = ({handleStorageChange, memberId}) => {
                         name="csDate"
                         value={csDate}
                     />
-                    <div>
-                        <button type="submit">문의 등록</button>
-                        <button type="button" onClick={handleCancel}>취소</button>
-                    </div>
                 </fieldset>
+
             </form>
-            <div>
-                <Link to="/cs">문의 목록</Link>
+            
+            <div className='cs-update-to'>
+                <Link to="/cs" className='btn cs-update-toselect'>전체 목록</Link>
             </div>
         </div>
     );

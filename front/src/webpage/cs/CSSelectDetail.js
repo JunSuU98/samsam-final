@@ -38,9 +38,6 @@ const CSSelectDetail = ({handleStorageChange, memberId}) => {
                         <Link to={`/cs/update/${csDetail.csNumber}`} state={{ csDetail }} className='btn cs-detail-toupdate'>수정</Link>
                         <Link to={`/cs/delete/${csDetail.csNumber}`} className='btn cs-detail-todelete'>삭제</Link>
 
-                        <Link to={`/cs/update/${csDetail.csNumber}`} state={{ csDetail }} className='cs-detail-toupdate'>수정</Link>
-                        <Link to={`/cs/delete/${csDetail.csNumber}`} className='cs-detail-todelete'>삭제</Link>
-
                     </div>
                 }
             </div>
@@ -61,7 +58,6 @@ const CSSelectDetail = ({handleStorageChange, memberId}) => {
             </div>
             <div className='cs-detail-to'>
                 <Link to="/cs" className='btn cs-detail-toselect'>전체 목록</Link>
-                <Link to="/cs" className='cs-detail-toselect'>전체 목록</Link>
             </div>
 
         </div>

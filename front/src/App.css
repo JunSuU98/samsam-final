@@ -799,6 +799,8 @@ margin: 0 30px;
 .category {
    justify-content: center;
    background-color: #f8f9fa;
+   display: flex;
+   padding: 10px;
 }
 
 /* 카테고리 탭들 스타일 */
@@ -854,6 +856,102 @@ margin: 0 30px;
 
 /* 탭 컨테이너의 기본 밑줄 제거 */
 .category.nav-tabs {
-  border-bottom: none;
+   border-bottom: none;
+}
+
+/* 채팅 목록 */
+.chatlistbutton-chat {
+   display: flex; /* Flexbox 레이아웃 적용 */
+   justify-content: flex-end; /* 내부 요소를 오른쪽으로 정렬 */
+}
+
+.chatlistbutton-chat .btn {
+   margin-right: 80px;
+   margin-bottom: 20px;
 }
 /******************************************************/
+
+
+/************product>component>PpagingTest.js*********************/
+
+/* 페이징 위치 */
+.ppagingtest-paging {
+	justify-content: center;
+   margin-bottom: 200px;
+}
+
+
+
+/***************product>component>ProductTable.js, ProductItem.js*******************/
+
+.producttable-table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 80%; /* 원하는 너비로 설정 */
+}
+
+.producttable-tbody {
+    text-align: center; /* 가운데 정렬 */
+    border-spacing: 10px; /* 셀 사이의 간격 */
+}
+
+.productitem-card {
+    max-width: 12rem;
+    margin: 0 auto; /* 카드를 가운데 정렬 */
+}
+
+/******************************************************/
+
+
+/* 공지사항, 고객문의 link 설정 */
+.rootpage-infocs {
+	position: fixed; /* 화면에 고정 */
+   bottom: 0; /* 화면의 하단에서 20px 떨어진 위치에 배치 */
+   left: 50%; /* 화면 가운데 정렬을 위해 왼쪽에서 절반만큼 이동 */
+   transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+	padding: 30px;
+	gap: 40px;
+	background-color: #f8f9fa;
+	z-index: 999;
+	transition: margin-top 0.3s ease; 
+}
+
+/******************RootPage.js*************************/
+
+/* 공지사항, 고객문의 link 설정 */
+.rootpage-infocs {
+   position: fixed; /* 화면에 고정 */
+   width: 100%;
+   bottom: 0; /* 화면의 하단에서 20px 떨어진 위치에 배치 */
+   left: 50%; /* 화면 가운데 정렬을 위해 왼쪽에서 절반만큼 이동 */
+   transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+	padding: 30px;
+	gap: 40px;
+	background-color: #f8f9fa;
+   z-index: 999;
+	transition: margin-top 0.3s ease; 
+}
+
+.rootpage-info, .rootpage-cs {
+	color: #7b7b7b;
+	text-decoration : none;
+	font-weight: bold;
+	font-size: 16px;
+	position: relative;
+}
+
+.rootpage-info::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* 링크의 중앙에서 선을 수직으로 정렬 */
+    transform: translateY(-50%);
+    height: 100%; /* 선의 세로 길이를 링크의 높이에 맞추기 */
+    width: 1px; /* 선의 두께 */
+    background-color: #3b3b3b; /* 선의 색상 */
+    right: -20px; /* 링크 오른쪽에 위치하도록 조정 */
+}

@@ -25,27 +25,24 @@ function ProductItem({productNumber}) {
 
 
     return (
-        <Link style={{textDecoration: 'none'}} to={`/products/${productNumber}`}>
-            <Card style={{ width: '14rem' }}>
-                <Card.Img variant="top" src={`/img/${imgData[0]?.imgUrl}` || 'placeholder.jpg'} 
-                    style={{
-                        width: '14rem',
-                        height: 'auto'
-                    }}
-                />
-                <Card.Body>
-                    <Card.Subtitle>
-                        {productData.productTitle}
-                    </Card.Subtitle>
-                    <Card.Title>
-                        {productData.productPrice}
-                    </Card.Title>
-                    <Card.Text>
-                        {productData.productContent}
-                    </Card.Text>
-                </Card.Body>
+            <Card style={{ width: '12rem' }} className='productitem-card'>
+                <Link style={{textDecoration: 'none', color:'black'}} to={`/products/${productNumber}`} >
+                    <Card.Img variant="top" src={`/img/${imgData[0]?.imgUrl}` || 'placeholder.jpg'} 
+                        style={{
+                            width: '12rem',
+                            height: 'auto'
+                        }}
+                    />
+                    <Card.Body>
+                        <Card.Subtitle>
+                            {productData.productTitle}
+                        </Card.Subtitle>
+                        <Card.Title>
+                            {productData.productPrice} 원
+                        </Card.Title>
+                    </Card.Body>
+                </Link>
             </Card>
-        </Link>
 
     );
 }

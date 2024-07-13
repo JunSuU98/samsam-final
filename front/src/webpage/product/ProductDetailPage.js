@@ -85,7 +85,7 @@ function ProductDetailPage({handleStorageChange, memberId}){
 
             {/* 상품 정보 보여주기  */}
             <p>제목: {productData.productTitle}</p>
-            <p>가격: {productData.productPrice}</p>
+            <p>가격: {productData.productPrice} 원</p>
             <p>내용: {productData.productContent}</p>
             <p>판매자: {productData.memberId}</p>
             <p>카테고리: {productData.productCategory}</p>

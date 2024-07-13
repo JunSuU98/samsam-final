@@ -49,7 +49,6 @@ const CSSelectDetail = ({handleStorageChange, memberId}) => {
                 <div className='cs-delete-btn'>
                     <button type="button" onClick={handleCancel} className='cs-delete-canclebtn'>취소</button>
                     <button type="button" onClick={handleDelete} className='btn cs-delete'>삭제</button>
-                    <button type="button" onClick={handleDelete} className=' cs-delete'>삭제</button>
                 </div>
             </div>
             <div className='cs-detail' style={{ display: 'flex', alignItems: 'center' }}>

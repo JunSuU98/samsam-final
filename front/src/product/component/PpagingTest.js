@@ -49,7 +49,7 @@ function PpagingTest({ totalPage, setProductList, findData, category}) {
     return(
         <div>
 
-            <Pagination>
+            <Pagination className="ppagingtest-paging">
 
                 {(currentPage - 1) > 0 &&  <Pagination.Prev onClick={() => loadProducts(currentPage - 1,  findData.searchFilter, findData.searchQuery)}/> }
                     {items}
