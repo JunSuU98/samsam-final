@@ -8,7 +8,7 @@ function MyPageButton({member_id}) {
 
     return (
         <Link to={`/members/${member_id}`}>
-            <Button variant="outline-primary">내 정보 보기</Button>{' '}
+            <Button variant="outline-primary">마이페이지</Button>{' '}
         </Link>
 
     )

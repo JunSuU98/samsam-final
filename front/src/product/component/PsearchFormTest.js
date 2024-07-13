@@ -52,7 +52,6 @@ function PsearchFormTest({handleProductList, handleTotalPage, handleCurrentPage,
                 <InputGroup className="mb-3 psearchform-search-input">
 
                     <Form.Select aria-label="Default select example" onChange={handleChange} name="searchFilter" className="psearchform-option">
-                        <option>검색옵션</option>
                         <option value="product_title">제목</option>
                         <option value="product_content">내용</option>
                     </Form.Select>

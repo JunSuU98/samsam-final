@@ -9,6 +9,10 @@ import MemberHeader from "../../member/page/MemberHeader";
 
 import StartChatButton from "../../chat/component/StartChatButton";
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 function ProductDetailPage({handleStorageChange, memberId}){
 
     const {productNumber} = useParams();
@@ -73,53 +77,124 @@ function ProductDetailPage({handleStorageChange, memberId}){
             <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
 
 
-            {/* react bootstrap Carousels 사용 이미지 띄우기 */}
-            <Carousel style={{width: '14rem', height: 'auto'}} interval={null}>
-                {imgData.map((img, index) => (
-                    <Carousel.Item key={index} >
-                        <img src={`/img/${img.imgUrl}`} style={{width: '14rem', height: '14rem', objectFit: 'contain'}}/>
-                    </Carousel.Item>
-                ))}
-            </Carousel>
 
+            <Container>
+                <Row style={{margin:"2rem"}}>
+                    <Col>
+                        <h1>상품 개요</h1>
+                    </Col>
+                </Row>
 
-            {/* 상품 정보 보여주기  */}
-            <p>제목: {productData.productTitle}</p>
-            <p>가격: {productData.productPrice} 원</p>
-            <p>내용: {productData.productContent}</p>
-            <p>판매자: {productData.memberId}</p>
-            <p>카테고리: {productData.productCategory}</p>
-            <p>상태: {productData.productStatus}</p>
+                {/* 상품 개요용 컨테이너 */}
 
-            {/* 찜하기, 채팅하기 버튼 */}
-            { sessionStorage.getItem("member_id") !== productData.memberId && 
-                <>
-                    <WishListAddButton 
-                        handleStorageChange={handleStorageChange} 
-                        memberId={memberId} 
-                        productNumber={productNumber}
-                        checked={checked}
-                        onHandleChecked={handleCheckChange}/>
-                    
-                    <StartChatButton 
-                        handleStorageChange={handleStorageChange} 
-                        memberId={memberId} 
-                        productNumber={productNumber}
-                        checked={checked}
-                        onHandleChecked={handleCheckChange}
-                        productData={productData}/>
-                </>
-            }
+                <Row className="ms-5">
+                    <Col>
+                        {/* react bootstrap Carousels 사용 이미지 띄우기 */}
+                        <Carousel style={{width: '20rem', height: '20rem'}} interval={null}>
+                            {imgData.map((img, index) => (
+                                <Carousel.Item key={index} >
+                                    <img src={`/img/${img.imgUrl}`} style={{width: '20rem', height: '20rem', objectFit: 'contain'}}/>
+                                </Carousel.Item>
+                            ))}
+                        </Carousel>
 
-            { memberId === productData.memberId &&
-                <div>
-                    <Link to={`/products/update/${productNumber}`}>
-                        <Button>수정하기</Button>
-                    </Link>
-                    <Button onClick={handleDelete}>삭제하기</Button>
-                </div>
-            }
-            
+                    </Col>
+
+                    <Col>
+                    {/* 개요용 col  */}
+                        <Row>
+                            <Col>
+                                <h3>
+                                    {productData.productTitle}
+                                </h3>
+                            </Col>
+                        </Row>
+                        
+                        <Row>
+                            <Col>
+                                <h1>
+                                    {productData.productPrice} 원
+                                </h1>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col>
+                                <h5>
+                                    {productData.memberId}
+                                </h5>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col>
+                                <hr/>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            {/* 찜하기, 채팅하기 버튼 */}
+                            { sessionStorage.getItem("member_id") !== productData.memberId && 
+                                <div className="d-flex">
+                                    <div className="me-5 ms-0">
+                                        <WishListAddButton 
+                                            handleStorageChange={handleStorageChange} 
+                                            memberId={memberId} 
+                                            productNumber={productNumber}
+                                            checked={checked}
+                                            onHandleChecked={handleCheckChange}/>
+                                    </div>
+                                    
+                                    <div>
+                                        <StartChatButton 
+                                            handleStorageChange={handleStorageChange} 
+                                            memberId={memberId} 
+                                            productNumber={productNumber}
+                                            checked={checked}
+                                            onHandleChecked={handleCheckChange}
+                                            productData={productData}/>
+                                    </div>
+
+                                </div>
+                            }
+
+                            { memberId === productData.memberId &&
+                                <div>
+                                    <Link to={`/products/update/${productNumber}`} className="me-5">
+                                        <Button>수정하기</Button>
+                                    </Link>
+                                    <Button onClick={handleDelete}>삭제하기</Button>
+                                </div>
+                            }
+
+                        </Row>
+
+                    </Col>
+                </Row>
+
+            </Container>
+
+            <Container style={{marginLeft: "4rem"}}>
+
+                <hr style={{
+                    border: 'none',
+                    height: '3px',
+                    backgroundColor: 'black'
+                }}/>
+                <Row>
+                    <Col>
+                        <h1>상품 정보 </h1>
+                        <hr />
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col>
+                        <p style={{ fontSize: '24px'}}>{productData.productContent}</p>
+                    </Col>
+                </Row>
+            </Container>
+
         </div>
     )
 

@@ -49,12 +49,12 @@ function StartChatButton({memberId, handleStorageChange, productData}){
 
 
     return(
-        <div style={{ display: 'inline' }}>
+        <>
             <Button variant="outline-primary" onClick={handleChat}>
                 채팅하기
             </Button>
             <LoginModal show={show} setShow={setShow} handleStorageChange={handleStorageChange} />
-        </div>
+        </>
     )
 }
 

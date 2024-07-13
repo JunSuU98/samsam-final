@@ -67,7 +67,6 @@ function LoginModal({ show, setShow, handleStorageChange }) {
          handleStorageChange();
 
          // 모달창을 닫고 navigate 를 이용해서 메인 화면으로 돌아간다 
-         // navigate("/");
          navigate(-1);
 
       } catch (error) {

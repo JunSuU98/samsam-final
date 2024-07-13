@@ -30,7 +30,8 @@ function ProductItem({productNumber}) {
                     <Card.Img variant="top" src={`/img/${imgData[0]?.imgUrl}` || 'placeholder.jpg'} 
                         style={{
                             width: '12rem',
-                            height: 'auto'
+                            height: '12rem',
+                            objectFit: 'contain'
                         }}
                     />
                     <Card.Body>

@@ -51,12 +51,12 @@ function WishListAddButton({memberId, handleStorageChange, productNumber, checke
 
 
     return(
-        <div style={{ display: 'inline' }}>
+        <>
             <Button variant="outline-primary" onClick={handleWishlist}>
                 {checked ? "찜해제" : "찜하기"}
             </Button>
             <LoginModal show={show} setShow={setShow} handleStorageChange={handleStorageChange} />
-        </div>
+        </>
     )
 }
 
