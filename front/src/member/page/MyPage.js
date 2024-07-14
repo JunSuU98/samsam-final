@@ -24,6 +24,8 @@ function MyPage({handleStorageChange, memberId}){
 
     const [member, setMember] = useState({});
 
+    const {member_id} = useParams();
+
     const [productList, setProductList] = useState([]);
     const [productImg, setProductImg] = useState([]); // 회원 판매 상품 이미지 
 
@@ -43,7 +45,7 @@ function MyPage({handleStorageChange, memberId}){
     const loadMember = async () => {
 
         try{
-            const response = await axios.get(`/members/${memberId}`);
+            const response = await axios.get(`/members/${member_id}`);
 
             // const response = await axios.get(`/members/${member_id}`);
             console.log(response.data);

@@ -83,7 +83,7 @@ const InsertInfoForm = () => {
             alert('입력되었습니다');
 
             // 입력 후 목록 페이지로 이동
-            navigate('/');
+            navigate('/info');
         } catch (error) {
             console.error('Error inserting info:', error);
             // 오류 처리 로직 추가 가능
@@ -154,6 +154,7 @@ const InsertInfoForm = () => {
                 <button type="submit" className="btn btn-primary">
                     등록
                 </button>
+                <Button variant="outline-danger" onClick={() => {navigate("/info")}}>이전</Button>
             </form>
         </div>
     );

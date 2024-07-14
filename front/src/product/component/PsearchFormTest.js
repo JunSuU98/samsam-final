@@ -13,7 +13,7 @@ function PsearchFormTest({handleProductList, handleTotalPage, handleCurrentPage,
 
     // 검색용 변수
     const [searchData, setSearchData] = useState({
-        searchFilter: '',
+        searchFilter: 'product_title',
         searchQuery: ''
     });
 

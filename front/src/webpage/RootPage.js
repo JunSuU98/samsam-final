@@ -71,6 +71,7 @@ function Root({handleStorageChange, memberId}){
     }
 
     useEffect(() => {
+        categorySearch("전체");
     }, []);
 
     return(
@@ -104,7 +105,7 @@ function Root({handleStorageChange, memberId}){
                 </Tab>
                 <Tab eventKey="의류" title="의류">
                 </Tab>
-                <Tab eventKey="취미" title="취미">
+                <Tab eventKey="취미용품" title="취미">
                 </Tab>
                 <Tab eventKey="생활용품" title="생활용품">
                 </Tab>
