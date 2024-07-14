@@ -47,7 +47,6 @@ function MyPage({handleStorageChange, memberId}){
         try{
             const response = await axios.get(`/members/${member_id}`);
 
-            // const response = await axios.get(`/members/${member_id}`);
             console.log(response.data);
             setMember(response.data);
 
@@ -77,7 +76,7 @@ function MyPage({handleStorageChange, memberId}){
 
     // 상품 정보 불러오기 
     const loadProduct = async () => {
-        const productResponse = await axios.get(`/api/products/member?member_id=${memberId}`);
+        const productResponse = await axios.get(`/api/products/member?member_id=${member_id}`);
         setProductList(productResponse.data);
         loadProductImg(productResponse.data);
     }
@@ -103,7 +102,7 @@ function MyPage({handleStorageChange, memberId}){
 
     // 찜 정보 불러오기
     const loadWishlist = async () => {
-        const wishlistResposne = await axios.get(`/api/wishlist/user/${memberId}`);
+        const wishlistResposne = await axios.get(`/api/wishlist/user/${member_id}`);
         setWishlist(wishlistResposne.data);
         loadWishlistData(wishlistResposne.data);
     }
@@ -143,7 +142,7 @@ function MyPage({handleStorageChange, memberId}){
 
     // 고객 문의 정보 불러오기
     const loadCS = async () => {
-        const csResponse = await axios.get(`/api/cs/member?member_id=${memberId}`);
+        const csResponse = await axios.get(`/api/cs/member?member_id=${member_id}`);
         setCslist(csResponse.data);
     }
 

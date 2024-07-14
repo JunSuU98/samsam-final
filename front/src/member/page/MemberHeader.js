@@ -16,6 +16,7 @@ import Col from "react-bootstrap/esm/Col";
 import { Link } from "react-router-dom";
 
 function MemberHeader({handleStorageChange, memberId}){
+    const adminSession = sessionStorage.getItem("member_session");
 
     return(
 
@@ -36,7 +37,7 @@ function MemberHeader({handleStorageChange, memberId}){
                     <Col>
                         <h1 className="mb-0 ms-2" style={{ fontFamily: 'Jua' }}>SAMSAM</h1>
                     </Col>
-                    {memberId === "admin" && <Link to={"/admin"} className="memberheader-admin-link">관리자 페이지</Link>}
+                    {adminSession === "admin" && <Link to={"/admin"} className="memberheader-admin-link">관리자 페이지</Link>}
                     </Navbar.Brand>
         
 

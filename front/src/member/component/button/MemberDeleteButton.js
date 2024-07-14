@@ -20,11 +20,11 @@ function MemberDeleteButton({handleStorageChange, memberId}){
                 if(member_id === sessionStorage.getItem("member_id")){
                     await axios.delete(`/members/${member_id}`);
                     navigate('/');
-                    sessionStorage.clear();
-                    handleStorageChange();
+                    if(sessionStorage.getItem("member_session") != "admin"){
+                        sessionStorage.clear();
+                        handleStorageChange();
+                    }
                 }
-                // await axios.delete(`/members/${member_id}`);
-                // navigate('/');
             } catch (error) {
                 console.log("삭제 요청 실패: ", error);
             }
