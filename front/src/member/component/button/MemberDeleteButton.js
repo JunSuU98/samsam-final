@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
 
-function MemberDeleteButton(){
+function MemberDeleteButton({handleStorageChange, memberId}){
 
     const {member_id} = useParams();
     const navigate = useNavigate();
@@ -17,8 +17,14 @@ function MemberDeleteButton(){
 
         if(confirmed) {
             try{
-                await axios.delete(`/members/${member_id}`);
-                navigate('/');
+                if(member_id === sessionStorage.getItem("member_id")){
+                    await axios.delete(`/members/${member_id}`);
+                    navigate('/');
+                    sessionStorage.clear();
+                    handleStorageChange();
+                }
+                // await axios.delete(`/members/${member_id}`);
+                // navigate('/');
             } catch (error) {
                 console.log("삭제 요청 실패: ", error);
             }

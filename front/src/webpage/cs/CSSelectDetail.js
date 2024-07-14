@@ -51,6 +51,10 @@ const CSSelectDetail = ({handleStorageChange, memberId}) => {
                 <div className='cs-detail-date-text'>
                     {csDetail.csDate ? csDetail.csDate.substring(0, 10) : ''}
                 </div></p>
+                <p className='cs-detail-date' style={{ display: 'flex', alignItems: 'center' }}><strong>문의자</strong>
+                <div className='cs-detail-title-text'>
+                    {csDetail.memberId}
+                </div></p>
             </div>
             <div>
                 <p className='cs-detail-content'><strong>문의 내용</strong>

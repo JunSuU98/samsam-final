@@ -31,7 +31,7 @@ function MemberJoinPage({handleStorageChange, memberId}){
             return;
         }
 
-        navigate("/")
+        // navigate("/")
     };
 
 
@@ -206,11 +206,11 @@ function MemberJoinPage({handleStorageChange, memberId}){
                                     </Col>
                                     <Col sm={3}>
                                         { idCheckResult === 1 ?
-                                            <Button id="id_check"  style={{ backgroundColor: '#21E6C1', color: 'white', borderColor: '#21E6C1', width: '100%', height: '45px', fontWeight:'bold'}}>
+                                            <Button type="button" id="id_check"  style={{ backgroundColor: '#21E6C1', color: 'white', borderColor: '#21E6C1', width: '100%', height: '45px', fontWeight:'bold'}}>
                                                 <FaCheck style={{fontSize: '26px'}}/>
                                             </Button>                                           
                                             :
-                                            <Button id="id_check" onClick={idCheck} value={0} style={{ backgroundColor: 'white', color: '#21E6C1', borderColor: '#21E6C1', width: '100%', height: '45px', fontWeight:'bold'}}>
+                                            <Button type="button" id="id_check" onClick={idCheck} value={0} style={{ backgroundColor: 'white', color: '#21E6C1', borderColor: '#21E6C1', width: '100%', height: '45px', fontWeight:'bold'}}>
                                                 중복확인 
                                             </Button>
                                         }
@@ -256,7 +256,7 @@ function MemberJoinPage({handleStorageChange, memberId}){
 
                             <Row>
                                 <Col sm={4}>
-                                    <Button style={{width:'100%', borderColor:'#7B7B7B', backgroundColor:'white', color:'#7B7B7B', fontWeight:'bold', fontSize:'20px', height:'50px'}} onClick={() => {navigate(-1)}}>취소 </Button>
+                                    <Button type="button" style={{width:'100%', borderColor:'#7B7B7B', backgroundColor:'white', color:'#7B7B7B', fontWeight:'bold', fontSize:'20px', height:'50px'}} onClick={() => {navigate(-1)}}>취소 </Button>
                                 </Col>
                                 <Col sm={8}>
                                     <Button type="submit" style={{width: '100%', border: 'none', backgroundColor: '#21E6C1', fontWeight:'bold', fontSize:'20px', height:'50px'}}>회원가입</Button>

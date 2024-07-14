@@ -56,7 +56,6 @@ function ProductInsertPage({handleStorageChange, memberId}) {
         setSelectedFiles(prevFiles => [...prevFiles, ...files]);
         setPreviewURLs(prevURLs => [...prevURLs, ...newFiles.map(file => file.previewURL)]);
 
-        console.log("selectFiles: ", selectedFiles);
     };
 
     const handleSubmit = async (e) => {
@@ -95,19 +94,15 @@ function ProductInsertPage({handleStorageChange, memberId}) {
             const formData = new FormData();
 
             formData.append("productNumber", productNumber);
-
-
-            // 이미지가 선택되지 않은 경우 public 폴더의 기본 이미지 추가
-            if (selectedFiles.length === 0) {
-                const defaultFile = new File([await fetch(DEFAULT_IMAGE_PATH).then(res => res.blob())], 'no_img.jpeg', { type: 'image/jpeg' });
-                formData.append("images", defaultFile);
-            } else {
-                selectedFiles.forEach(file => {
-                    formData.append("images", file);
-                });
-            }
-
-
+                // 이미지가 선택되지 않은 경우 public 폴더의 기본 이미지 추가
+                if (selectedFiles.length === 0) {
+                    const defaultFile = new File([await fetch(DEFAULT_IMAGE_PATH).then(res => res.blob())], 'no_img.jpeg', { type: 'image/jpeg' });
+                    formData.append("images", defaultFile);
+                } else {
+                    selectedFiles.forEach(file => {
+                        formData.append("images", file);
+                    });
+                }
             await axios.post("/api/img/insert", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"

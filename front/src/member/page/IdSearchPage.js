@@ -46,6 +46,7 @@ function IdSearchPage({handleStorageChange, memberId}) {
             // 회원 id 응답
             setUserId(response.data);
         } catch (error){
+            alert("입력하신 정보의 회원을 찾을 수 없습니다");
             console.log('search error: ', error);
         }
         

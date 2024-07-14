@@ -129,7 +129,7 @@ public class SocialLoginService {
 				return "네이버 로그아웃 성공";
 			}
 			
-			return "refresh api call success";
+			return "refresh api response success";
 		} else {
 			return "refresh api call fail";
 		}

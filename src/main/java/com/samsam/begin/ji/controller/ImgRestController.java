@@ -55,6 +55,7 @@ public class ImgRestController {
 	}
 	
 	
+	// 이미지 파일 데이터 전송
 	@GetMapping("/img/{img_url}")
 	public ResponseEntity<byte[]> viewImg(@PathVariable("img_url") String img_url) throws IOException {
 		
@@ -70,7 +71,7 @@ public class ImgRestController {
 
 	
 
-	// 새로운 이미지 추가 
+// 새로운 이미지 추가 
 	@PostMapping("/api/img/insert")
 	public ResponseEntity<String> insertImg(@RequestParam(value = "images") List<MultipartFile> imgFiles
 			, @RequestParam(name = "productNumber", required = false) Integer productNumber

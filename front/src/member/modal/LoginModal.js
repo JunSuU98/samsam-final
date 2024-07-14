@@ -67,7 +67,7 @@ function LoginModal({ show, setShow, handleStorageChange }) {
          handleStorageChange();
 
          // 모달창을 닫고 navigate 를 이용해서 메인 화면으로 돌아간다 
-         navigate(-1);
+         navigate("/");
 
       } catch (error) {
          alert("로그인에 실패했습니다")

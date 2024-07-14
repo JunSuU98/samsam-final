@@ -53,6 +53,7 @@ function PwSearchPage({handleStorageChange, memberId}) {
                 setStep(2);
 
             } catch (error) {
+                alert("입력하신 정보의 회원을 찾을 수 없습니다")
                 console.log('search error: ', error);
             }
         } else if (step === 2) {

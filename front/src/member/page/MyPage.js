@@ -214,7 +214,7 @@ function MyPage({handleStorageChange, memberId}){
                     {memberSnsId === null && (
                         <>
                             <ToUpdatePageButton />
-                            <MemberDeleteButton />
+                            <MemberDeleteButton handleStorageChange={handleStorageChange} memberId={memberId}/>
                         </>
                     )}
 

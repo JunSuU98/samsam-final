@@ -75,9 +75,6 @@ function ProductDetailPage({handleStorageChange, memberId}){
 
             {/* 카테고리, 로그인, 검색창 헤더 */}
             <MemberHeader handleStorageChange={handleStorageChange} memberId={memberId}/>
-
-
-
             <Container>
                 <Row style={{margin:"2rem"}}>
                     <Col>
@@ -133,7 +130,6 @@ function ProductDetailPage({handleStorageChange, memberId}){
                                 </h6>
                             </Col>
                         </Row>
-
 
                         <Row>
                             <Col>
